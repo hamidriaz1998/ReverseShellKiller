@@ -2,6 +2,8 @@ import psutil
 import os
 import re
 from .llm_detector import is_reverse_shell_by_llm
+from .email_notifier import send_email_notification
+
 
 SUSPICIOUS_CMDS = [
     "bash -i",
@@ -96,9 +98,21 @@ def scan_processes(logger, dry_run=False, use_llm=True):
             is_suspicious = looks_like_reverse_shell(cmdline) or has_suspicious_connection(pid)
             
             if is_suspicious and use_llm:
-                # Only kill if the LLM also confirms it's a reverse shell
-                is_suspicious = is_reverse_shell_by_llm(cmdline, pid, logger)
-                if not is_suspicious:
+                # Get the result object directly from analyze_with_llm
+                result = None
+                from .llm_detector import analyze_with_llm
+                
+                # Analyze with LLM and get full result
+                llm_result = analyze_with_llm(cmdline, pid, logger)
+                
+                # Determine if it's suspicious based on the result
+                is_suspicious = llm_result and llm_result.is_reverse_shell and llm_result.confidence >= 0.7
+                
+                # Send email if confirmed as suspicious
+                if is_suspicious and llm_result:
+                    send_email_notification(pid, cmdline, llm_result.confidence)
+                    logger.warning(f"LLM confirmed PID {pid} as a reverse shell with {llm_result.confidence:.2f} confidence")
+                else:
                     logger.info(f"LLM cleared PID {pid} that was initially flagged as suspicious")
             
             if is_suspicious:
@@ -106,5 +120,10 @@ def scan_processes(logger, dry_run=False, use_llm=True):
                 if not dry_run:
                     os.kill(pid, 9)
                     logger.info(f"Killed PID {pid}")
+                    
+                    # Send a notification even if LLM wasn't used
+                    if not use_llm:
+                        send_email_notification(pid, cmdline, None)
+                        
         except (psutil.NoSuchProcess, psutil.AccessDenied):
             continue
