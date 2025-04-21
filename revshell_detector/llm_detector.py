@@ -1,4 +1,4 @@
-import google as genai
+from google import genai
 from typing import List, Optional
 from pydantic import BaseModel, Field
 import os
@@ -8,7 +8,7 @@ import psutil
 # Configure the Google Gemini API
 API_KEY = os.environ.get("GEMINI_API_KEY")
 if API_KEY:
-    genai.configure(api_key=API_KEY)
+    client = genai.Client(api_key=API_KEY)
 
 # Define the schema for LLM response validation
 class ShellAnalysisResult(BaseModel):
@@ -89,22 +89,27 @@ def get_connection_info(pid: int) -> str:
     except Exception as e:
         return f"Could not retrieve connection information: {str(e)}"
 
-def analyze_with_llm(cmdline: List[str], pid: Optional[int] = None) -> Optional[ShellAnalysisResult]:
+def analyze_with_llm(cmdline: List[str], pid: Optional[int] = None, logger=None) -> Optional[ShellAnalysisResult]:
     """
     Use Google Gemini to analyze if a command line represents a reverse shell.
     
     Args:
         cmdline: List of command line arguments
         pid: Process ID (optional) to provide connection context
+        logger: Logger to record LLM analysis results
         
     Returns:
         ShellAnalysisResult object or None if analysis failed
     """
     if not API_KEY:
+        if logger:
+            logger.warning("No Gemini API key found. Skipping LLM analysis.")
         return None
         
     try:
-        model = genai.GenerativeModel('gemini-1.5-pro')
+        if logger:
+            logger.info(f"Performing LLM analysis for PID {pid} with command: {' '.join(cmdline)}")
+            
         joined_cmd = " ".join(cmdline)
         
         # Get connection info if pid is provided
@@ -121,7 +126,10 @@ def analyze_with_llm(cmdline: List[str], pid: Optional[int] = None) -> Optional[
             connection_info=connection_info
         )
         
-        response = model.generate_content(prompt)
+        if logger:
+            logger.debug(f"Sending prompt to LLM: {prompt[:100]}...")
+            
+        response = client.models.generate_content(contents=prompt, model="gemini-2.0-flash")
         
         # Extract JSON from response
         result_text = response.text
@@ -137,23 +145,46 @@ def analyze_with_llm(cmdline: List[str], pid: Optional[int] = None) -> Optional[
             
         # Parse the response
         analysis_dict = json.loads(json_str)
-        return ShellAnalysisResult(**analysis_dict)
+        result = ShellAnalysisResult(**analysis_dict)
+        
+        if logger:
+            logger.info(f"LLM Analysis for PID {pid}: " +
+                       f"is_reverse_shell={result.is_reverse_shell}, " +
+                       f"confidence={result.confidence:.2f}")
+            logger.debug(f"LLM Reasoning: {result.reasoning}")
+            
+        return result
         
     except Exception as e:
-        print(f"LLM analysis error: {e}")
+        error_msg = f"LLM analysis error: {e}"
+        if logger:
+            logger.error(error_msg)
+        print(error_msg)
         return None
 
-def is_reverse_shell_by_llm(cmdline: List[str], pid: Optional[int] = None) -> bool:
+def is_reverse_shell_by_llm(cmdline: List[str], pid: Optional[int] = None, logger=None) -> bool:
     """
     Determine if a command is a reverse shell using LLM analysis.
     
     Args:
         cmdline: List of command line arguments
         pid: Process ID (optional) to provide connection context
+        logger: Logger to record LLM analysis results
         
     Returns:
         True if the LLM identifies this as a reverse shell with high confidence,
         False otherwise
     """
-    result = analyze_with_llm(cmdline, pid)
-    return result and result.is_reverse_shell and result.confidence >= 0.7
+    result = analyze_with_llm(cmdline, pid, logger)
+    is_reverse_shell = result and result.is_reverse_shell and result.confidence >= 0.7
+    
+    if logger and result:
+        if is_reverse_shell:
+            logger.warning(f"LLM confirmed PID {pid} as a reverse shell with {result.confidence:.2f} confidence")
+        else:
+            if result.is_reverse_shell:
+                logger.info(f"LLM identified PID {pid} as potential reverse shell but confidence too low: {result.confidence:.2f}")
+            else:
+                logger.info(f"LLM cleared PID {pid} (confidence: {result.confidence:.2f})")
+                
+    return is_reverse_shell

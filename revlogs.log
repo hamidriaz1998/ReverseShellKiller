@@ -1,0 +1,85 @@
+[2025-04-21 14:38:11,442] INFO: Reverse Shell Detector started.
+[2025-04-21 14:38:11,442] INFO: LLM-based detection enabled.
+[2025-04-21 14:38:11,823] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:38:11,826] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:38:22,159] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:38:22,160] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:38:32,608] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:38:32,610] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:38:43,345] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:38:43,352] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:38:53,680] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:38:53,681] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:39:04,066] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:39:04,067] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:39:14,460] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:39:14,462] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:39:24,862] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:39:24,864] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:39:35,318] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:39:35,319] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:39:45,666] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:39:45,667] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:39:56,263] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:39:56,265] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:40:07,032] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:40:07,039] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:40:17,574] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:40:17,576] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:40:21,654] INFO: Reverse Shell Detector started.
+[2025-04-21 14:40:21,654] INFO: LLM-based detection enabled.
+[2025-04-21 14:40:21,965] WARNING: No Gemini API key found. Skipping LLM analysis.
+[2025-04-21 14:40:21,965] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:40:21,967] WARNING: No Gemini API key found. Skipping LLM analysis.
+[2025-04-21 14:40:21,967] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:40:32,276] WARNING: No Gemini API key found. Skipping LLM analysis.
+[2025-04-21 14:40:32,276] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:40:32,278] WARNING: No Gemini API key found. Skipping LLM analysis.
+[2025-04-21 14:40:32,278] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:41:06,408] INFO: Reverse Shell Detector started.
+[2025-04-21 14:41:06,408] INFO: LLM-based detection enabled.
+[2025-04-21 14:41:06,915] WARNING: No Gemini API key found. Skipping LLM analysis.
+[2025-04-21 14:41:06,916] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:41:06,922] WARNING: No Gemini API key found. Skipping LLM analysis.
+[2025-04-21 14:41:06,922] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:41:17,364] WARNING: No Gemini API key found. Skipping LLM analysis.
+[2025-04-21 14:41:17,364] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:41:17,366] WARNING: No Gemini API key found. Skipping LLM analysis.
+[2025-04-21 14:41:17,366] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:41:27,931] WARNING: No Gemini API key found. Skipping LLM analysis.
+[2025-04-21 14:41:27,932] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:41:27,934] WARNING: No Gemini API key found. Skipping LLM analysis.
+[2025-04-21 14:41:27,934] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:51:47,392] INFO: Reverse Shell Detector started.
+[2025-04-21 14:51:47,392] INFO: LLM-based detection enabled.
+[2025-04-21 14:51:47,694] INFO: Performing LLM analysis for PID 10577 with command: nc -lnvp 1234
+[2025-04-21 14:51:47,698] ERROR: LLM analysis error: 'Client' object has no attribute 'model'
+[2025-04-21 14:51:47,698] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:51:47,699] INFO: Performing LLM analysis for PID 10716 with command: nc localhost 1234
+[2025-04-21 14:51:47,703] ERROR: LLM analysis error: 'Client' object has no attribute 'model'
+[2025-04-21 14:51:47,703] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:52:10,063] INFO: Reverse Shell Detector started.
+[2025-04-21 14:52:10,063] INFO: LLM-based detection enabled.
+[2025-04-21 14:52:10,408] INFO: Performing LLM analysis for PID 10577 with command: nc -lnvp 1234
+[2025-04-21 14:52:10,412] ERROR: LLM analysis error: Models.generate_content() takes 1 positional argument but 2 positional arguments (and 1 keyword-only argument) were given
+[2025-04-21 14:52:10,412] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:52:10,414] INFO: Performing LLM analysis for PID 10716 with command: nc localhost 1234
+[2025-04-21 14:52:10,418] ERROR: LLM analysis error: Models.generate_content() takes 1 positional argument but 2 positional arguments (and 1 keyword-only argument) were given
+[2025-04-21 14:52:10,418] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:52:20,741] INFO: Performing LLM analysis for PID 10577 with command: nc -lnvp 1234
+[2025-04-21 14:52:20,745] ERROR: LLM analysis error: Models.generate_content() takes 1 positional argument but 2 positional arguments (and 1 keyword-only argument) were given
+[2025-04-21 14:52:20,745] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:52:20,747] INFO: Performing LLM analysis for PID 10716 with command: nc localhost 1234
+[2025-04-21 14:52:20,751] ERROR: LLM analysis error: Models.generate_content() takes 1 positional argument but 2 positional arguments (and 1 keyword-only argument) were given
+[2025-04-21 14:52:20,752] INFO: LLM cleared PID 10716 that was initially flagged as suspicious
+[2025-04-21 14:52:28,886] INFO: Reverse Shell Detector started.
+[2025-04-21 14:52:28,887] INFO: LLM-based detection enabled.
+[2025-04-21 14:52:29,236] INFO: Performing LLM analysis for PID 10577 with command: nc -lnvp 1234
+[2025-04-21 14:52:37,511] INFO: LLM Analysis for PID 10577: is_reverse_shell=False, confidence=0.90
+[2025-04-21 14:52:37,511] INFO: LLM cleared PID 10577 (confidence: 0.90)
+[2025-04-21 14:52:37,511] INFO: LLM cleared PID 10577 that was initially flagged as suspicious
+[2025-04-21 14:52:37,513] INFO: Performing LLM analysis for PID 10716 with command: nc localhost 1234
+[2025-04-21 14:52:39,488] INFO: LLM Analysis for PID 10716: is_reverse_shell=True, confidence=0.80
+[2025-04-21 14:52:39,488] WARNING: LLM confirmed PID 10716 as a reverse shell with 0.80 confidence
+[2025-04-21 14:52:39,488] WARNING: Suspicious PID 10716: nc localhost 1234
+[2025-04-21 14:52:39,488] INFO: Killed PID 10716

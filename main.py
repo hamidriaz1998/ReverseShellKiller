@@ -7,9 +7,9 @@ import os
 
 
 def main():
+    load_dotenv()
     args = get_config()
     logger = setup_logger(args.logfile)
-    load_dotenv()
 
     logger.info("Reverse Shell Detector started.")
 
