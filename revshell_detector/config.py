@@ -1,4 +1,5 @@
 import argparse
+import os
 
 
 def get_config():
@@ -8,4 +9,19 @@ def get_config():
     )
     parser.add_argument("--logfile", type=str, help="Path to log file")
     parser.add_argument("--dry-run", action="store_true", help="Detect but do not kill")
-    return parser.parse_args()
+
+    # LLM configuration
+    parser.add_argument("--use-llm", action="store_true", help="Use LLM for analysis")
+    parser.add_argument(
+        "--gemini-key",
+        type=str,
+        help="Google Gemini API key (overrides environment variable)",
+    )
+
+    args = parser.parse_args()
+
+    # Set API key from argument if provided, otherwise use environment variable
+    if args.gemini_key:
+        os.environ["GEMINI_API_KEY"] = args.gemini_key
+
+    return args
