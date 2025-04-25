@@ -14,7 +14,7 @@ pip install -e .
 
 ### Option 2: Install directly
 ```bash
-pip install git+https://github.com/yourusername/ReverseShellKiller.git
+pip install git+https://github.com/hamidriaz1998/ReverseShellKiller.git
 ```
 
 ## Usage
