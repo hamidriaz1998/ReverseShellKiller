@@ -23,8 +23,12 @@ def main():
             logger.info("LLM-based detection enabled.")
 
     while True:
-        scan_processes(logger, dry_run=args.dry_run, use_llm=args.use_llm)
-        time.sleep(args.interval)
+        try:
+            scan_processes(logger, dry_run=args.dry_run, use_llm=args.use_llm)
+            time.sleep(args.interval)
+        except Exception as e:
+            logger.error(f"Error during scan: {str(e)}")
+            time.sleep(args.interval)
 
 
 if __name__ == "__main__":
