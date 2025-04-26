@@ -184,6 +184,24 @@ For persistent protection, you can set up Reverse Shell Killer as a systemd serv
     sudo systemctl enable reverse-shell-killer.service
     sudo systemctl start reverse-shell-killer.service
     ```
+    ### Uninstalling the Service
+    
+    If you need to remove the service and associated files, you can use the provided uninstall script:
+    
+    ```bash
+    # Make the script executable (if needed)
+    chmod +x scripts/uninstall_service.sh
+    
+    # Run the uninstall script
+    sudo ./scripts/uninstall_service.sh
+    ```
+    
+    This script will:
+    * Stop and disable the systemd service
+    * Remove the service file from `/etc/systemd/system/`
+    * Remove the installed binary from `/usr/local/bin/`
+    * Remove the environment directory and files from `/etc/reverse-shell-killer/`
+    * Keep any log files that were created (for reference)
 
 ## Contributing
 
