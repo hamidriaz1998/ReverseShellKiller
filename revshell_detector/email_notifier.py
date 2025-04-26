@@ -17,12 +17,15 @@ def send_email_notification(pid, cmdline, confidence):
     load_dotenv()
     sender_email = os.environ.get("EMAIL_USER")
     sender_password = os.environ.get("EMAIL_PASS")
+    recipient_email = os.environ.get("EMAIL_RECIPIENT")
     print(f"Sender email: {sender_email}")
     print(f"Sender password: {sender_password}")
-    recipient_email = "abdulrehmansafdar2928@gmail.com"
+    print(f"Recipient email: {recipient_email}")
 
-    if not sender_email or not sender_password:
-        print("Email credentials are not set in the environment variables.")
+    if not sender_email or not sender_password or not recipient_email:
+        print(
+            "Email credentials or recipient email are not set in the environment variables."
+        )
         return
 
     subject = f"Reverse Shell Detected: PID {pid}"
