@@ -152,6 +152,9 @@ def analyze_with_llm(
 
         # Extract JSON from response
         result_text = response.text
+        if result_text is None:
+            raise ValueError("Empty response from LLM")
+
         if "```json" in result_text:
             # Extract JSON from code block
             json_str = result_text.split("```json")[1].split("```")[0].strip()
@@ -200,6 +203,8 @@ def is_reverse_shell_by_llm(
         False otherwise
     """
     result = analyze_with_llm(cmdline, pid, logger)
+    if result is None:
+        raise ValueError("Empty response from LLM")
     is_reverse_shell = result and result.is_reverse_shell and result.confidence >= 0.7
 
     if logger and result:
