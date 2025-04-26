@@ -129,13 +129,25 @@ For persistent protection, you can set up Reverse Shell Killer as a systemd serv
     chmod +x scripts/install_service.sh
 
     # Run the installation script from the project root directory
+    # Example: Install with default settings (interval 10, default log, no LLM)
     sudo ./scripts/install_service.sh
+
+    # Example: Install with LLM enabled and a 5-second interval
+    sudo ./scripts/install_service.sh --use-llm --interval 5
+
+    # Example: Install with a custom log file
+    sudo ./scripts/install_service.sh --logfile /var/log/custom_revshell.log
     ```
     This script will:
     *   Copy the built binary to `/usr/local/bin/`.
     *   Copy your `.env` file to `/etc/reverse-shell-killer/environment` and set secure permissions.
-    *   Create and enable a systemd service (`reverse-shell-killer.service`) configured to use the environment file and the `--use-llm` flag.
+    *   Create and enable a systemd service (`reverse-shell-killer.service`) configured with the specified options (or defaults).
     *   Start the service.
+
+    **Available script options:**
+    *   `--interval <seconds>`: Set the scan interval (default: 10).
+    *   `--logfile <path>`: Set the log file path (default: /var/log/reverse-shell-killer.log).
+    *   `--use-llm`: Enable LLM analysis (requires API key in the environment file).
 
 ### Method 2: Manual setup
 
