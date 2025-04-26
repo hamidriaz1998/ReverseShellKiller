@@ -1,7 +1,7 @@
 import psutil
 import os
 import re
-from .llm_detector import is_reverse_shell_by_llm
+from .llm_detector import analyze_with_llm
 from .email_notifier import send_email_notification
 
 
@@ -59,7 +59,6 @@ def has_suspicious_connection(pid):
         p = psutil.Process(pid)
 
         try:
-            proc_name = p.name()
             cmdline = p.cmdline()
 
             if is_benign_application(cmdline):
@@ -106,10 +105,6 @@ def scan_processes(logger, dry_run=False, use_llm=True):
             ) or has_suspicious_connection(pid)
 
             if is_suspicious and use_llm:
-                # Get the result object directly from analyze_with_llm
-                result = None
-                from .llm_detector import analyze_with_llm
-
                 # Analyze with LLM and get full result
                 llm_result = analyze_with_llm(cmdline, pid, logger)
 
