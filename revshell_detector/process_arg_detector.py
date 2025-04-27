@@ -135,6 +135,7 @@ def has_suspicious_connection(pid):
 
 
 marked_unsuspicious = []
+marked_suspicious = []
 
 
 def scan_processes(
@@ -149,6 +150,13 @@ def scan_processes(
             pid = proc.info["pid"]
             cmdline = proc.info["cmdline"]
 
+            if cmdline in marked_suspicious:
+                logger.warning(f"Process {pid} has a suspicious command line: {' '.join(cmdline)}")
+                if not dry_run:
+                    logger.info(f"Killing process {pid}")
+                    proc.kill()
+                continue
+
             # Skip empty cmdline, already marked unsuspecious processes, white listed command, or known benign applications
             if (
                 pid in marked_unsuspicious
@@ -157,6 +165,9 @@ def scan_processes(
                 or is_benign_application(cmdline)
             ):
                 continue
+
+            if metrics:
+                metrics.processes_scanned.inc()
 
             is_suspicious = looks_like_reverse_shell(
                 cmdline
@@ -175,6 +186,7 @@ def scan_processes(
 
                 # Send email if confirmed as suspicious and update detected counter
                 if is_suspicious and llm_result:
+                    marked_suspicious.append(cmdline)
                     if metrics:
                         metrics.detections_total.inc()
                     send_email_notification(pid, cmdline, llm_result.confidence)

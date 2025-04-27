@@ -12,7 +12,9 @@ class MetricsCollector:
         self.false_positive_total = Counter(
             "false_positives_total", "Total number of false positives"
         )
-
+        self.processes_scanned = Counter(
+            "processes_scanned", "Total number of scanned processes"
+        )
         self.cpu_usage = Gauge(
             "daemon_cpu_usage", "Current CPU usage percentage of daemon"
         )

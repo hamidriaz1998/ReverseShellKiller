@@ -42,7 +42,11 @@ def main():
     while True:
         try:
             scan_processes(
-                logger, dry_run=args.dry_run, use_llm=args.use_llm, metrics=metrics, api_key=api_key
+                logger,
+                dry_run=args.dry_run,
+                use_llm=args.use_llm,
+                metrics=metrics,
+                api_key=api_key,
             )
             time.sleep(args.interval)
         except Exception as e:

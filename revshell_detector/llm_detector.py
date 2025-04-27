@@ -96,7 +96,10 @@ def get_connection_info(pid: int) -> str:
 
 
 def analyze_with_llm(
-    cmdline: List[str], pid: Optional[int] = None, logger=None, api_key: Optional[str] = None
+    cmdline: List[str],
+    pid: Optional[int] = None,
+    logger=None,
+    api_key: Optional[str] = None,
 ) -> Optional[ShellAnalysisResult]:
     """
     Use Google Gemini to analyze if a command line represents a reverse shell.
