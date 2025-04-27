@@ -1,15 +1,10 @@
 import json
-import os
+import time
 from typing import List, Optional
 
 import psutil
 from google import genai
 from pydantic import BaseModel, Field
-
-# Configure the Google Gemini API
-API_KEY = os.environ.get("GEMINI_API_KEY")
-if API_KEY:
-    client = genai.Client(api_key=API_KEY)
 
 
 # Define the schema for LLM response validation
@@ -101,7 +96,7 @@ def get_connection_info(pid: int) -> str:
 
 
 def analyze_with_llm(
-    cmdline: List[str], pid: Optional[int] = None, logger=None
+    cmdline: List[str], pid: Optional[int] = None, logger=None, api_key: Optional[str] = None
 ) -> Optional[ShellAnalysisResult]:
     """
     Use Google Gemini to analyze if a command line represents a reverse shell.
@@ -114,11 +109,12 @@ def analyze_with_llm(
     Returns:
         ShellAnalysisResult object or None if analysis failed
     """
-    if not API_KEY:
+    if not api_key:
         if logger:
             logger.warning("No Gemini API key found. Skipping LLM analysis.")
         return None
 
+    client = genai.Client(api_key=api_key)
     try:
         if logger:
             logger.info(
@@ -147,7 +143,7 @@ def analyze_with_llm(
             logger.debug(f"Sending prompt to LLM: {prompt[:100]}...")
 
         response = client.models.generate_content(
-            contents=prompt, model="gemini-2.0-flash"
+            contents=prompt, model="gemini-2.0-flash-lite"
         )
 
         # Extract JSON from response
@@ -177,6 +173,7 @@ def analyze_with_llm(
             )
             logger.debug(f"LLM Reasoning: {result.reasoning}")
 
+        time.sleep(0.2)
         return result
 
     except Exception as e:

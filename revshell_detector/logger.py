@@ -3,7 +3,7 @@ import logging.handlers
 import os
 
 
-def setup_logger(logfile=None, debug=False):
+def setup_logger(logfile=None, debug=True):
     logger = logging.getLogger("revshell_detector")
 
     # Clear existing handlers
@@ -16,7 +16,7 @@ def setup_logger(logfile=None, debug=False):
 
     # Create formatters
     formatter = logging.Formatter("[%(asctime)s] %(levelname)s: %(message)s")
-    
+
     # Always add file handler if logfile is specified
     if logfile:
         # Make sure directory exists
@@ -30,7 +30,7 @@ def setup_logger(logfile=None, debug=False):
         )
         file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)
-    
+
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
