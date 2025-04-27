@@ -3,7 +3,7 @@ import logging.handlers
 import os
 
 
-def setup_logger(logfile=None, debug=True):
+def setup_logger(logfile=None, debug=False):
     logger = logging.getLogger("revshell_detector")
 
     # Clear existing handlers

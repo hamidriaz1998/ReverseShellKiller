@@ -148,6 +148,7 @@ For persistent protection, you can set up Reverse Shell Killer as a systemd serv
     *   `--interval <seconds>`: Set the scan interval (default: 10).
     *   `--logfile <path>`: Set the log file path (default: /var/log/reverse-shell-killer.log).
     *   `--use-llm`: Enable LLM analysis (requires API key in the environment file).
+    *   `--metrics`: Enable metrics collection 
 
 ### Method 2: Manual setup
 
@@ -202,6 +203,62 @@ For persistent protection, you can set up Reverse Shell Killer as a systemd serv
     * Remove the installed binary from `/usr/local/bin/`
     * Remove the environment directory and files from `/etc/reverse-shell-killer/`
     * Keep any log files that were created (for reference)
+
+## Monitoring with Prometheus and Grafana
+
+Reverse Shell Killer can expose metrics that can be collected by Prometheus and visualized in Grafana dashboards. This provides real-time insights into the tool's performance and detection activities.
+
+### Setup Monitoring
+
+1. **Enable metrics collection** when running the tool:
+   ```bash
+   # Run with metrics enabled
+   reverse-shell-killer --metrics
+   
+   # Or enable metrics when installing as a service
+   sudo ./scripts/install_service.sh --metrics
+   ```
+
+2. **Start Prometheus and Grafana** using the provided Docker Compose configuration:
+   ```bash
+   cd grafana_docker
+   docker-compose up -d
+   ```
+
+3. **Access the dashboards**:
+   - Prometheus: [http://localhost:9090](http://localhost:9090)
+   - Grafana: [http://localhost:3000](http://localhost:3000) (default credentials: admin/admin)
+
+### Available Metrics
+
+The following metrics are exposed on port 8000:
+
+- `reverse_shell_detections_total`: Counter of detected reverse shells
+- `false_positives_total`: Counter of false positive detections
+- `processes_scanned`: Counter of scanned processes
+- `daemon_cpu_usage`: CPU usage percentage of the daemon
+- `daemon_memory_usage`: Memory usage (MB) of the daemon
+
+### Creating a Grafana Dashboard
+
+1. Log in to Grafana at [http://localhost:3000](http://localhost:3000)
+2. Add Prometheus as a data source:
+   - Go to Configuration > Data Sources > Add data source
+   - Select Prometheus
+   - Set URL to `http://prometheus:9090`
+   - Click "Save & Test"
+3. Create a new dashboard with panels for key metrics:
+   - Detection rate panel: `rate(reverse_shell_detections_total[5m])`
+   - Process scan rate panel: `rate(processes_scanned[1m])`
+   - Resource usage panels for CPU and memory
+
+### Stopping the Monitoring Stack
+
+To stop the monitoring services:
+```bash
+cd grafana_docker
+docker-compose down
+```
 
 ## Contributing
 

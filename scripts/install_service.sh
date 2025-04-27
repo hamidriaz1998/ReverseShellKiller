@@ -4,6 +4,7 @@
 DEFAULT_INTERVAL=10
 DEFAULT_LOGFILE="/var/log/reverse-shell-killer.log"
 USE_LLM_FLAG="" # Empty means don't add the flag
+USE_METRICS_FLAG="" # Empty means don't add the flag
 
 # Parse command-line arguments for the installer script
 while [[ "$#" -gt 0 ]]; do
@@ -11,6 +12,7 @@ while [[ "$#" -gt 0 ]]; do
         --interval) INTERVAL_ARG="$2"; shift ;;
         --logfile) LOGFILE_ARG="$2"; shift ;;
         --use-llm) USE_LLM_ARG="true" ;;
+        --metrics) USE_METRICS_ARG="true" ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
     esac
     shift
@@ -21,6 +23,9 @@ SERVICE_INTERVAL=${INTERVAL_ARG:-$DEFAULT_INTERVAL}
 SERVICE_LOGFILE=${LOGFILE_ARG:-$DEFAULT_LOGFILE}
 if [[ "$USE_LLM_ARG" == "true" ]]; then
     USE_LLM_FLAG="--use-llm"
+fi
+if [[ "$USE_METRICS_ARG" == "true" ]]; then
+    USE_METRICS_FLAG="--metrics"
 fi
 
 INSTALL_DIR="/usr/local/bin"
@@ -59,7 +64,7 @@ sudo cp "$ENV_FILE_SOURCE" "$ENV_FILE_TARGET"
 sudo chmod 600 "$ENV_FILE_TARGET" # Set restrictive permissions
 
 # Construct the ExecStart command dynamically
-EXEC_START_CMD="$INSTALL_DIR/reverse-shell-killer --interval $SERVICE_INTERVAL --logfile $SERVICE_LOGFILE $USE_LLM_FLAG"
+EXEC_START_CMD="$INSTALL_DIR/reverse-shell-killer --interval $SERVICE_INTERVAL --logfile $SERVICE_LOGFILE $USE_LLM_FLAG $USE_METRICS_FLAG"
 # Trim potential leading/trailing whitespace
 EXEC_START_CMD=$(echo "$EXEC_START_CMD" | xargs)
 
@@ -97,5 +102,8 @@ sudo systemctl restart reverse-shell-killer.service # Use restart to ensure it p
 
 echo "Installation completed! Service is running."
 echo "Environment file copied to $ENV_FILE_TARGET."
+if [[ "$USE_METRICS_ARG" == "true" ]]; then
+    echo "Metrics enabled! Access Prometheus metrics at http://localhost:8000"
+fi
 echo "Check status with: sudo systemctl status reverse-shell-killer.service"
 echo "View logs with: sudo journalctl -u reverse-shell-killer.service"
