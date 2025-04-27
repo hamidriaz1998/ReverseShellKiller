@@ -34,7 +34,8 @@ def main():
     if args.metrics:
         metrics = MetricsCollector()
         t = threading.Thread(target=metrics.update_resource_usage)
-        t.run()
+        t.daemon = True
+        t.start()
         logger.info("Collecting Metrics.")
     else:
         metrics = None

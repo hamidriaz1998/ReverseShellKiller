@@ -23,6 +23,7 @@ class MetricsCollector:
         )
 
     def update_resource_usage(self):
-        process = psutil.Process()
-        self.cpu_usage.set(process.cpu_percent(interval=1))
-        self.memory_usage.set(process.memory_info().rss / 1024 / 1024)
+        while True:
+            process = psutil.Process()
+            self.cpu_usage.set(process.cpu_percent(interval=1))
+            self.memory_usage.set(process.memory_info().rss / 1024 / 1024)
