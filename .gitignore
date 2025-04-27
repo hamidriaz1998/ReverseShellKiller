@@ -11,5 +11,5 @@ wheels/
 .ruff_cache/
 .env
 .vscode
-.log
+*.log
 [Oo]utput/
