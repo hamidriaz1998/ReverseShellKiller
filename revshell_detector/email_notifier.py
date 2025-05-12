@@ -3,6 +3,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
 from dotenv import load_dotenv
+
+
 def send_email_notification(pid, cmdline, confidence):
     """
     Sends an email notification when a reverse shell is detected.
@@ -15,12 +17,15 @@ def send_email_notification(pid, cmdline, confidence):
     load_dotenv()
     sender_email = os.environ.get("EMAIL_USER")
     sender_password = os.environ.get("EMAIL_PASS")
+    recipient_email = os.environ.get("EMAIL_RECIPIENT")
     print(f"Sender email: {sender_email}")
     print(f"Sender password: {sender_password}")
-    recipient_email = "abdulrehmansafdar2928@gmail.com"
+    print(f"Recipient email: {recipient_email}")
 
-    if not sender_email or not sender_password:
-        print("Email credentials are not set in the environment variables.")
+    if not sender_email or not sender_password or not recipient_email:
+        print(
+            "Email credentials or recipient email are not set in the environment variables."
+        )
         return
 
     subject = f"Reverse Shell Detected: PID {pid}"
@@ -108,13 +113,23 @@ def send_email_notification(pid, cmdline, confidence):
         <h3>Detection Details:</h3>
         <ul>
             <li><strong>Process ID:</strong> {pid}</li>
-            <li><strong>Command:</strong> <code>{' '.join(cmdline) if isinstance(cmdline, list) else cmdline}</code></li>
+            <li><strong>Command:</strong> <code>{
+        " ".join(cmdline) if isinstance(cmdline, list) else cmdline
+    }</code></li>
             <li><strong>Confidence Score:</strong> 
-                {f'<span class="confidence-high">{confidence:.2f}</span>' if confidence is not None and confidence > 0.7 else
-                f'<span class="confidence-medium">{confidence:.2f}</span>' if confidence is not None and confidence > 0.4 else
-                f'<span class="confidence-low">{confidence:.2f}</span>' if confidence is not None else 'N/A'}
+                {
+        f'<span class="confidence-high">{confidence:.2f}</span>'
+        if confidence is not None and confidence > 0.7
+        else f'<span class="confidence-medium">{confidence:.2f}</span>'
+        if confidence is not None and confidence > 0.4
+        else f'<span class="confidence-low">{confidence:.2f}</span>'
+        if confidence is not None
+        else "N/A"
+    }
             </li>
-            <li><strong>Timestamp:</strong> {__import__('datetime').datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</li>
+            <li><strong>Timestamp:</strong> {
+        __import__("datetime").datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }</li>
         </ul>
         
         <div class="action">
@@ -131,18 +146,20 @@ def send_email_notification(pid, cmdline, confidence):
         
         <div class="footer">
             <p>This is an automated security alert from your Reverse Shell Detection System.</p>
-            <p>Report generated on {__import__('datetime').datetime.now().strftime('%Y-%m-%d at %H:%M:%S')}</p>
+            <p>Report generated on {
+        __import__("datetime").datetime.now().strftime("%Y-%m-%d at %H:%M:%S")
+    }</p>
         </div>
     </div>
 </body>
 </html>
 """
     # Create the email
-    msg = MIMEMultipart('alternative')
+    msg = MIMEMultipart("alternative")
     msg["From"] = sender_email
     msg["To"] = recipient_email
     msg["Subject"] = subject
-    
+
     # Attach HTML content
     msg.attach(MIMEText(body, "html"))
 

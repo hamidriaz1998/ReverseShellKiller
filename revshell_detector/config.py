@@ -7,8 +7,16 @@ def get_config():
     parser.add_argument(
         "--interval", type=int, default=10, help="Scan interval in seconds"
     )
-    parser.add_argument("--logfile", type=str, help="Path to log file", default="./revlogs.log")
+    parser.add_argument(
+        "--logfile", type=str, help="Path to log file", default="./revlogs.log"
+    )
     parser.add_argument("--dry-run", action="store_true", help="Detect but do not kill")
+    parser.add_argument(
+        "--metrics",
+        action="store_true",
+        help="Use prometheus client to collect metrics",
+        default=False,
+    )
 
     # LLM configuration
     parser.add_argument("--use-llm", action="store_true", help="Use LLM for analysis")
