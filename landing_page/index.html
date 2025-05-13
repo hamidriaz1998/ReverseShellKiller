@@ -1,166 +1,247 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reverse Shell Killer - Security Tool</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <i class="fas fa-shield-alt"></i>
-                <h1>Reverse Shell Killer</h1>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Reverse Shell Killer - Security Tool</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+    </head>
+    <body>
+        <div class="overlay"></div>
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <h1>Reverse Shell Killer</h1>
+                </div>
+                <div class="mobile-nav-toggle" id="mobile-nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#installation">Installation</a></li>
+                        <li><a href="#configuration">Configuration</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                    <div class="theme-switch-wrapper-mobile">
+                        <label class="theme-switch" for="theme-toggle-mobile">
+                            <input type="checkbox" id="theme-toggle-mobile" />
+                            <span class="slider">
+                                <i class="fas fa-sun slider-icon sun-icon"></i>
+                                <i class="fas fa-moon slider-icon moon-icon"></i>
+                            </span>
+                        </label>
+                    </div>
+                </nav>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle" />
+                        <span class="slider">
+                            <i class="fas fa-sun slider-icon sun-icon"></i>
+                            <i class="fas fa-moon slider-icon moon-icon"></i>
+                        </span>
+                    </label>
+                </div>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#installation">Installation</a></li>
-                    <li><a href="#download">Download</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
-            </nav>
-            <div class="theme-switch-wrapper">
-                <label class="theme-switch" for="theme-toggle">
-                    <input type="checkbox" id="theme-toggle" />
-                    <span class="slider">
-                        <i class="fas fa-sun slider-icon sun-icon"></i>
-                        <i class="fas fa-moon slider-icon moon-icon"></i>
-                    </span>
-                </label>
-            </div>
-        </div>
-    </header>
+        </header>
 
-    <section id="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Protect Your Linux Systems from Reverse Shell Attacks</h1>
-                <p>An open-source security tool that automatically detects and terminates malicious reverse shells using pattern matching and AI-powered analysis.</p>
-                <div class="cta-buttons">
-                    <a href="#download" class="btn btn-primary">Download Now</a>
-                    <a href="https://github.com/hamidriaz1998/ReverseShellKiller" target="_blank" class="btn btn-secondary">View on GitHub</a>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>
+                        Protect Your Linux Systems from Reverse Shell Attacks
+                    </h1>
+                    <p>
+                        An open-source security tool that automatically detects
+                        and terminates malicious reverse shells using pattern
+                        matching and AI-powered analysis.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#download" class="btn btn-primary"
+                            >Download Now</a
+                        >
+                        <a
+                            href="https://github.com/hamidriaz1998/ReverseShellKiller"
+                            target="_blank"
+                            class="btn btn-secondary"
+                            >View on GitHub</a
+                        >
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img
+                        src="shield.svg"
+                        alt="Security Shield"
+                        id="shield-img"
+                    />
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="shield.svg" alt="Security Shield" id="shield-img">
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="features">
-        <div class="container">
-            <h2 class="section-title">Key Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-search"></i>
+        <section id="features">
+            <div class="container">
+                <h2 class="section-title">Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Intelligent Detection</h3>
+                        <p>
+                            Uses both pattern matching and AI-powered analysis
+                            to identify reverse shells with high accuracy.
+                        </p>
                     </div>
-                    <h3>Intelligent Detection</h3>
-                    <p>Uses both pattern matching and AI-powered analysis to identify reverse shells with high accuracy.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-virus"></i>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                        <h3>Real-time Protection</h3>
+                        <p>
+                            Continuously monitors processes and network
+                            connections to catch reverse shells in real-time.
+                        </p>
                     </div>
-                    <h3>Real-time Protection</h3>
-                    <p>Continuously monitors processes and network connections to catch reverse shells in real-time.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bell"></i>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3>Email Notifications</h3>
+                        <p>
+                            Sends detailed email alerts when suspicious activity
+                            is detected.
+                        </p>
                     </div>
-                    <h3>Email Notifications</h3>
-                    <p>Sends detailed email alerts when suspicious activity is detected.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Metrics Collection</h3>
+                        <p>
+                            Built-in Prometheus integration for monitoring and
+                            visualization.
+                        </p>
                     </div>
-                    <h3>Metrics Collection</h3>
-                    <p>Built-in Prometheus integration for monitoring and visualization.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>LLM-Powered Analysis</h3>
+                        <p>
+                            Optional Google Gemini integration for advanced
+                            threat detection with minimal false positives.
+                        </p>
                     </div>
-                    <h3>LLM-Powered Analysis</h3>
-                    <p>Optional Google Gemini integration for advanced threat detection with minimal false positives.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-cogs"></i>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Configurable</h3>
+                        <p>
+                            Easily customize scan intervals, logging, and
+                            detection sensitivity.
+                        </p>
                     </div>
-                    <h3>Configurable</h3>
-                    <p>Easily customize scan intervals, logging, and detection sensitivity.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="how-it-works">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <div class="workflow">
-                <div class="workflow-item">
-                    <div class="workflow-number">1</div>
-                    <div class="workflow-content">
-                        <h3>Process Scanning</h3>
-                        <p>Periodically scans all running processes and their command line arguments.</p>
+        <section id="how-it-works">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="workflow">
+                    <div class="workflow-item">
+                        <div class="workflow-number">1</div>
+                        <div class="workflow-content">
+                            <h3>Process Scanning</h3>
+                            <p>
+                                Periodically scans all running processes and
+                                their command line arguments.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="workflow-item">
-                    <div class="workflow-number">2</div>
-                    <div class="workflow-content">
-                        <h3>Pattern Matching</h3>
-                        <p>Applies regex-based detection to identify commonly used reverse shell patterns.</p>
+                    <div class="workflow-item">
+                        <div class="workflow-number">2</div>
+                        <div class="workflow-content">
+                            <h3>Pattern Matching</h3>
+                            <p>
+                                Applies regex-based detection to identify
+                                commonly used reverse shell patterns.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="workflow-item">
-                    <div class="workflow-number">3</div>
-                    <div class="workflow-content">
-                        <h3>Network Analysis</h3>
-                        <p>Examines suspicious network connections that may indicate command and control channels.</p>
+                    <div class="workflow-item">
+                        <div class="workflow-number">3</div>
+                        <div class="workflow-content">
+                            <h3>Network Analysis</h3>
+                            <p>
+                                Examines suspicious network connections that may
+                                indicate command and control channels.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="workflow-item">
-                    <div class="workflow-number">4</div>
-                    <div class="workflow-content">
-                        <h3>LLM Verification</h3>
-                        <p>Uses Google Gemini to analyze suspicious processes and reduce false positives.</p>
+                    <div class="workflow-item">
+                        <div class="workflow-number">4</div>
+                        <div class="workflow-content">
+                            <h3>LLM Verification</h3>
+                            <p>
+                                Uses Google Gemini to analyze suspicious
+                                processes and reduce false positives.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="workflow-item">
-                    <div class="workflow-number">5</div>
-                    <div class="workflow-content">
-                        <h3>Threat Response</h3>
-                        <p>Terminates malicious processes and sends detailed email notifications to admins.</p>
+                    <div class="workflow-item">
+                        <div class="workflow-number">5</div>
+                        <div class="workflow-content">
+                            <h3>Threat Response</h3>
+                            <p>
+                                Terminates malicious processes and sends
+                                detailed email notifications to admins.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="installation">
-        <div class="container">
-            <h2 class="section-title">Installation</h2>
-            <div class="installation-tabs">
-                <button class="tab-button active" data-tab="source-install">Install from Source</button>
-                <button class="tab-button" data-tab="uv-install">Using uv</button>
-                <button class="tab-button" data-tab="binary-install">Build Linux Binary</button>
-                <button class="tab-button" data-tab="service-install">Run as a Service</button>
-            </div>
-            
-            <div class="tab-content active" id="source-install">
-                <div class="installation-steps">
-                    <div class="step">
-                        <h3>Install from Source</h3>
-                        <p>Clone the repository and install using pip:</p>
-                        <div class="code-block">
-                            <pre><code># Clone the repository
+        <section id="installation">
+            <div class="container">
+                <h2 class="section-title">Installation</h2>
+                <p class="section-intro">
+                    Before installation, we recommend reviewing the
+                    <a href="#configuration">Configuration</a> section to
+                    understand the environment variables and command-line
+                    options available.
+                </p>
+                <div class="installation-tabs">
+                    <button class="tab-button active" data-tab="source-install">
+                        Install from Source
+                    </button>
+                    <button class="tab-button" data-tab="uv-install">
+                        Using uv
+                    </button>
+                    <button class="tab-button" data-tab="binary-install">
+                        Build Linux Binary
+                    </button>
+                    <button class="tab-button" data-tab="service-install">
+                        Run as a Service
+                    </button>
+                </div>
+
+                <div class="tab-content active" id="source-install">
+                    <div class="installation-steps">
+                        <div class="step">
+                            <h3>Install from Source</h3>
+                            <p>Clone the repository and install using pip:</p>
+                            <div class="code-block">
+                                <pre><code># Clone the repository
 git clone https://github.com/hamidriaz1998/ReverseShellKiller.git
 cd ReverseShellKiller
 
@@ -170,19 +251,22 @@ source .venv/bin/activate
 
 # Install in development mode
 pip install -e .</code></pre>
-                            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                <button
+                                    class="copy-btn"
+                                    onclick="copyToClipboard(this)"
+                                >
+                                    Copy
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="tab-content" id="uv-install">
-                <div class="installation-steps">
-                    <div class="step">
-                        <h3>Using uv (Python Package Installer)</h3>
-                        <p>If you don't have uv installed, you can get it from: <a href="https://github.com/astral-sh/uv" target="_blank">https://github.com/astral-sh/uv</a></p>
-                        <div class="code-block">
-                            <pre><code># Clone the repository
+
+                <div class="tab-content" id="uv-install">
+                    <div class="installation-steps">
+                        <div class="step">
+                            <div class="code-block">
+                                <pre><code># Clone the repository
 git clone https://github.com/hamidriaz1998/ReverseShellKiller.git
 cd ReverseShellKiller
 
@@ -191,45 +275,81 @@ uv init
 
 # Install packages
 uv sync</code></pre>
-                            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                <button
+                                    class="copy-btn"
+                                    onclick="copyToClipboard(this)"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+                            <p>
+                                Remember to set up your environment variables in
+                                a <code>.env</code> file as described in the
+                                <a href="#configuration">Configuration</a>
+                                section before running the tool.
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="tab-content" id="binary-install">
-                <div class="installation-steps">
-                    <div class="step">
-                        <h3>Building a Linux ELF Binary</h3>
-                        <p>To build a standalone executable:</p>
-                        <div class="code-block">
-                            <pre><code># Make sure you're in a virtual environment with dependencies installed
+
+                <div class="tab-content" id="binary-install">
+                    <div class="installation-steps">
+                        <div class="step">
+                            <h3>Building a Linux ELF Binary</h3>
+                            <p>To build a standalone executable:</p>
+                            <div class="code-block">
+                                <pre><code># Make sure you're in a virtual environment with dependencies installed
 uv add pyinstaller
 
 # Build the executable
 pyinstaller --clean linux_build.spec
 
 # Executable will be available at dist/reverse-shell-killer</code></pre>
-                            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                <button
+                                    class="copy-btn"
+                                    onclick="copyToClipboard(this)"
+                                >
+                                    Copy
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="tab-content" id="service-install">
-                <div class="installation-steps">
-                    <div class="step">
-                        <h3>Running as a System Service</h3>
-                        <p>For persistent protection, you can set up Reverse Shell Killer as a systemd service:</p>
-                        
-                        <h4>Option 1: Using the Installation Script (Recommended)</h4>
-                        <ol>
-                            <li><strong>Build the binary:</strong> Follow the steps in "Building a Linux ELF Binary"</li>
-                            <li><strong>Create the .env file:</strong> Set up your credentials in a .env file in the project root</li>
-                            <li><strong>Run the installation script:</strong></li>
-                        </ol>
-                        <div class="code-block">
-                            <pre><code># Make the script executable (if needed)
+
+                <div class="tab-content" id="service-install">
+                    <div class="installation-steps">
+                        <div class="step">
+                            <h3>Running as a System Service</h3>
+                            <p>
+                                For persistent protection, you can set up
+                                Reverse Shell Killer as a systemd service. Make
+                                sure you've set up the required environment
+                                variables in a <code>.env</code> file first (see
+                                <a href="#configuration">Configuration</a>):
+                            </p>
+
+                            <h4>
+                                Option 1: Using the Installation Script
+                                (Recommended)
+                            </h4>
+                            <ol>
+                                <li>
+                                    <strong>Build the binary:</strong> Follow
+                                    the steps in "Building a Linux ELF Binary"
+                                </li>
+                                <li>
+                                    <strong>Create the .env file:</strong> Set
+                                    up your credentials in a .env file in the
+                                    project root
+                                </li>
+                                <li>
+                                    <strong
+                                        >Run the installation script:</strong
+                                    >
+                                </li>
+                            </ol>
+                            <div class="code-block">
+                                <pre><code># Make the script executable (if needed)
 chmod +x scripts/install_service.sh
 
 # Run the installation script from the project root directory
@@ -241,13 +361,18 @@ sudo ./scripts/install_service.sh --use-llm --interval 5
 
 # Example: Install with a custom log file
 sudo ./scripts/install_service.sh --logfile /var/log/custom_revshell.log</code></pre>
-                            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                        </div>
-                        
-                        <h4>Option 2: Manual Setup</h4>
-                        <p>You can also manually configure the service:</p>
-                        <div class="code-block">
-                            <pre><code># Create the environment directory and copy your .env file
+                                <button
+                                    class="copy-btn"
+                                    onclick="copyToClipboard(this)"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+
+                            <h4>Option 2: Manual Setup</h4>
+                            <p>You can also manually configure the service:</p>
+                            <div class="code-block">
+                                <pre><code># Create the environment directory and copy your .env file
 sudo mkdir -p /etc/reverse-shell-killer
 sudo cp .env /etc/reverse-shell-killer/environment
 sudo chmod 600 /etc/reverse-shell-killer/environment
@@ -259,57 +384,353 @@ sudo nano /etc/systemd/system/reverse-shell-killer.service
 sudo systemctl daemon-reload
 sudo systemctl enable reverse-shell-killer.service
 sudo systemctl start reverse-shell-killer.service</code></pre>
-                            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                        </div>
-                        
-                        <h4>Uninstalling the Service</h4>
-                        <p>If you need to remove the service:</p>
-                        <div class="code-block">
-                            <pre><code># Make the script executable (if needed)
+                                <button
+                                    class="copy-btn"
+                                    onclick="copyToClipboard(this)"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+
+                            <h4>Uninstalling the Service</h4>
+                            <p>If you need to remove the service:</p>
+                            <div class="code-block">
+                                <pre><code># Make the script executable (if needed)
 chmod +x scripts/uninstall_service.sh
 
 # Run the uninstall script
 sudo ./scripts/uninstall_service.sh</code></pre>
-                            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                <button
+                                    class="copy-btn"
+                                    onclick="copyToClipboard(this)"
+                                >
+                                    Copy
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="download">
-        <div class="container">
-            <h2 class="section-title">Download</h2>
-            <div class="download-options">
-                <div class="download-card">
-                    <div class="download-icon">
-                        <i class="fab fa-linux"></i>
+        <section id="configuration">
+            <div class="container">
+                <h2 class="section-title">Configuration</h2>
+
+                <div class="tab-content active" id="cmd-args">
+                    <div class="config-content">
+                        <h3>Command-Line Arguments</h3>
+                        <p>
+                            Reverse Shell Killer supports various command-line
+                            arguments to customize its behavior:
+                        </p>
+
+                        <div class="args-table">
+                            <div class="arg-row">
+                                <div class="arg-name">
+                                    <code>--interval</code>
+                                </div>
+                                <div class="arg-desc">
+                                    <p>
+                                        Scan interval in seconds (default: 10)
+                                    </p>
+                                    <p>
+                                        <em
+                                            >Example:
+                                            <code>--interval 5</code> to scan
+                                            every 5 seconds</em
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="arg-row">
+                                <div class="arg-name">
+                                    <code>--logfile</code>
+                                </div>
+                                <div class="arg-desc">
+                                    <p>
+                                        Path to log file (default:
+                                        ./revlogs.log)
+                                    </p>
+                                    <p>
+                                        <em
+                                            >Example:
+                                            <code
+                                                >--logfile
+                                                /var/log/revshell.log</code
+                                            ></em
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="arg-row">
+                                <div class="arg-name">
+                                    <code>--dry-run</code>
+                                </div>
+                                <div class="arg-desc">
+                                    <p>
+                                        Detect suspicious processes but do not
+                                        terminate them
+                                    </p>
+                                    <p>
+                                        <em
+                                            >Useful for testing before deploying
+                                            in production</em
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="arg-row">
+                                <div class="arg-name">
+                                    <code>--metrics</code>
+                                </div>
+                                <div class="arg-desc">
+                                    <p>Enable Prometheus metrics collection</p>
+                                    <p>
+                                        <em
+                                            >Exposes metrics on port 8000 for
+                                            monitoring</em
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="arg-row">
+                                <div class="arg-name">
+                                    <code>--use-llm</code>
+                                </div>
+                                <div class="arg-desc">
+                                    <p>
+                                        Enable LLM-based analysis for improved
+                                        detection accuracy
+                                    </p>
+                                    <p>
+                                        <em>Requires Google Gemini API key</em>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="arg-row">
+                                <div class="arg-name">
+                                    <code>--gemini-key</code>
+                                </div>
+                                <div class="arg-desc">
+                                    <p>
+                                        Google Gemini API key (overrides
+                                        environment variable)
+                                    </p>
+                                    <p>
+                                        <em
+                                            >Example:
+                                            <code
+                                                >--gemini-key
+                                                your_api_key_here</code
+                                            ></em
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example-usage">
+                            <h4>Example Usage</h4>
+                            <div class="code-block">
+                                <pre><code># Basic usage with default settings
+reverse-shell-killer
+
+# Advanced configuration
+reverse-shell-killer --interval 5 --logfile /var/log/revshell.log --use-llm --metrics</code></pre>
+                                <button
+                                    class="copy-btn"
+                                    onclick="copyToClipboard(this)"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Linux Executable</h3>
-                    <p>Ready-to-use binary for Linux systems</p>
-                    <a href="https://github.com/hamidriaz1998/ReverseShellKiller/releases/download/v0.1.0/reverseShellKiller-linux-amd64" class="btn btn-primary download-btn" download>
-                        <i class="fas fa-download"></i> Download for Linux
-                    </a>
-                    <p class="version">Version 0.1.0</p>
                 </div>
-                <div class="download-card">
-                    <div class="download-icon">
-                        <i class="fab fa-github"></i>
+
+                <div class="tab-content" id="env-vars">
+                    <div class="config-content">
+                        <h3>Environment Variables</h3>
+                        <p>
+                            Reverse Shell Killer uses environment variables for
+                            sensitive configurations like API keys and email
+                            credentials. These should be stored in a
+                            <code>.env</code> file in the project's root
+                            directory.
+                        </p>
+
+                        <div class="env-file">
+                            <h4>Sample .env File</h4>
+                            <div class="code-block">
+                                <pre><code># Google Gemini API Key for LLM-based detection
+GEMINI_API_KEY=your_gemini_api_key_here
+
+# Email notification settings
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_gmail_app_password
+EMAIL_RECIPIENT=recipient_email@example.com</code></pre>
+                                <button
+                                    class="copy-btn"
+                                    onclick="copyToClipboard(this)"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="env-vars-table">
+                            <h4>Available Environment Variables</h4>
+
+                            <div class="var-row">
+                                <div class="var-name">
+                                    <code>GEMINI_API_KEY</code>
+                                </div>
+                                <div class="var-desc">
+                                    <p>
+                                        Your Google Gemini API key for LLM-based
+                                        detection
+                                    </p>
+                                    <p>
+                                        <em
+                                            >Required when using
+                                            <code>--use-llm</code> flag</em
+                                        >
+                                    </p>
+                                    <p>
+                                        Get your API key from the
+                                        <a
+                                            href="https://aistudio.google.com/"
+                                            target="_blank"
+                                            >Google AI Studio</a
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="var-row">
+                                <div class="var-name">
+                                    <code>EMAIL_USER</code>
+                                </div>
+                                <div class="var-desc">
+                                    <p>
+                                        Gmail address to send notifications from
+                                    </p>
+                                    <p>
+                                        <em
+                                            >Required for email
+                                            notifications</em
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="var-row">
+                                <div class="var-name">
+                                    <code>EMAIL_PASS</code>
+                                </div>
+                                <div class="var-desc">
+                                    <p>
+                                        Gmail app password (not your regular
+                                        Gmail password)
+                                    </p>
+                                    <p>
+                                        <em
+                                            >Required for email
+                                            notifications</em
+                                        >
+                                    </p>
+                                    <p>
+                                        Generate an App Password in your
+                                        <a
+                                            href="https://myaccount.google.com/apppasswords"
+                                            target="_blank"
+                                            >Google Account Security settings</a
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="var-row">
+                                <div class="var-name">
+                                    <code>EMAIL_RECIPIENT</code>
+                                </div>
+                                <div class="var-desc">
+                                    <p>
+                                        Email address to send notifications to
+                                    </p>
+                                    <p>
+                                        <em
+                                            >Required for email
+                                            notifications</em
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="security-note">
+                            <h4>Security Note</h4>
+                            <p>
+                                <i class="fas fa-exclamation-triangle"></i> Keep
+                                your <code>.env</code> file secure and never
+                                commit it to version control. The file is
+                                included in <code>.gitignore</code> by default.
+                            </p>
+                        </div>
                     </div>
-                    <h3>Source Code</h3>
-                    <p>Get the source code from GitHub</p>
-                    <a href="https://github.com/hamidriaz1998/ReverseShellKiller" target="_blank" class="btn btn-secondary">
-                        <i class="fab fa-github"></i> View on GitHub
-                    </a>
-                    <p>Instructions for installation from source available in the README</p>
                 </div>
             </div>
+        </section>
 
-            <div class="install-instructions">
-                <h3>Quick Installation</h3>
-                <div class="code-block">
-                    <pre><code># Download
+        <section id="download">
+            <div class="container">
+                <h2 class="section-title">Download</h2>
+                <div class="download-options">
+                    <div class="download-card">
+                        <div class="download-icon">
+                            <i class="fab fa-linux"></i>
+                        </div>
+                        <h3>Linux Executable</h3>
+                        <p>Ready-to-use binary for Linux systems</p>
+                        <a
+                            href="https://github.com/hamidriaz1998/ReverseShellKiller/releases/download/v0.1.0/reverseShellKiller-linux-amd64"
+                            class="btn btn-primary download-btn"
+                            download
+                        >
+                            <i class="fas fa-download"></i> Download for Linux
+                        </a>
+                        <p class="version">Version 0.1.0</p>
+                    </div>
+                    <div class="download-card">
+                        <div class="download-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <h3>Source Code</h3>
+                        <p>Get the source code from GitHub</p>
+                        <a
+                            href="https://github.com/hamidriaz1998/ReverseShellKiller"
+                            target="_blank"
+                            class="btn btn-secondary"
+                        >
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                        <p>
+                            Instructions for installation from source available
+                            in the README
+                        </p>
+                    </div>
+                </div>
+
+                <div class="install-instructions">
+                    <h3>Quick Installation</h3>
+                    <div class="code-block">
+                        <pre><code># Download
 wget https://github.com/hamidriaz1998/ReverseShellKiller/releases/download/v0.1.0/reverseShellKiller-linux-amd64
 
 # Make executable
@@ -317,125 +738,221 @@ chmod +x reverse_shell_killer
 
 # Run with basic settings
 ./reverse_shell_killer</code></pre>
-                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                        <button
+                            class="copy-btn"
+                            onclick="copyToClipboard(this)"
+                        >
+                            Copy
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="faq">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>What is a reverse shell?</h3>
-                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+        <section id="faq">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What is a reverse shell?</h3>
+                            <span class="faq-toggle"
+                                ><i class="fas fa-chevron-down"></i
+                            ></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                A reverse shell is a type of shell in which the
+                                target machine initiates a connection back to
+                                the attacker's machine. This is commonly used in
+                                cyberattacks to bypass firewalls and gain
+                                unauthorized access to systems.
+                            </p>
+                        </div>
                     </div>
-                    <div class="faq-answer">
-                        <p>A reverse shell is a type of shell in which the target machine initiates a connection back to the attacker's machine. This is commonly used in cyberattacks to bypass firewalls and gain unauthorized access to systems.</p>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Does this tool require root privileges?</h3>
+                            <span class="faq-toggle"
+                                ><i class="fas fa-chevron-down"></i
+                            ></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Yes, to monitor all processes and terminate
+                                malicious ones, this tool needs to run with root
+                                privileges. You can run it using sudo or as the
+                                root user.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>Does this tool require root privileges?</h3>
-                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Can I use this on production servers?</h3>
+                            <span class="faq-toggle"
+                                ><i class="fas fa-chevron-down"></i
+                            ></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Yes, but we recommend running it in dry-run mode
+                                (--dry-run) first to ensure it doesn't terminate
+                                any legitimate processes in your environment.
+                                Once you're confident in its detection
+                                capabilities, you can enable automatic
+                                termination.
+                            </p>
+                        </div>
                     </div>
-                    <div class="faq-answer">
-                        <p>Yes, to monitor all processes and terminate malicious ones, this tool needs to run with root privileges. You can run it using sudo or as the root user.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>Can I use this on production servers?</h3>
-                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, but we recommend running it in dry-run mode (--dry-run) first to ensure it doesn't terminate any legitimate processes in your environment. Once you're confident in its detection capabilities, you can enable automatic termination.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>How do I set up email notifications?</h3>
-                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Create a .env file in the same directory as the executable with the following variables:</p>
-                        <pre>EMAIL_USER=your-email@gmail.com
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How do I set up email notifications?</h3>
+                            <span class="faq-toggle"
+                                ><i class="fas fa-chevron-down"></i
+                            ></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Create a .env file in the same directory as the
+                                executable with the following variables:
+                            </p>
+                            <pre>
+EMAIL_USER=your-email@gmail.com
 EMAIL_PASS=your-app-password
-EMAIL_RECIPIENT=admin@yourcompany.com</pre>
-                        <p><strong>Note:</strong> EMAIL_PASS should be a Gmail App Password, not your regular password. You can generate one in your Google Account security settings.</p>
+EMAIL_RECIPIENT=admin@yourcompany.com</pre
+                            >
+                            <p>
+                                <strong>Note:</strong> EMAIL_PASS should be a
+                                Gmail App Password, not your regular password.
+                                You can generate one in your Google Account
+                                security settings.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>How can I enable LLM-powered detection?</h3>
-                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How can I enable LLM-powered detection?</h3>
+                            <span class="faq-toggle"
+                                ><i class="fas fa-chevron-down"></i
+                            ></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                For enhanced detection accuracy, the tool can
+                                use Google's Gemini API:
+                            </p>
+                            <ol>
+                                <li>
+                                    Get a Gemini API key from the
+                                    <a
+                                        href="https://aistudio.google.com/"
+                                        target="_blank"
+                                        >Google AI Studio</a
+                                    >
+                                </li>
+                                <li>
+                                    Add your API key to the .env file as
+                                    GEMINI_API_KEY=your-api-key
+                                </li>
+                                <li>
+                                    Run with the --use-llm flag:
+                                    <code>reverse-shell-killer --use-llm</code>
+                                </li>
+                            </ol>
+                        </div>
                     </div>
-                    <div class="faq-answer">
-                        <p>For enhanced detection accuracy, the tool can use Google's Gemini API:</p>
-                        <ol>
-                            <li>Get a Gemini API key from the <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a></li>
-                            <li>Add your API key to the .env file as GEMINI_API_KEY=your-api-key</li>
-                            <li>Run with the --use-llm flag: <code>reverse-shell-killer --use-llm</code></li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>Can I monitor the tool's performance?</h3>
-                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, Reverse Shell Killer supports Prometheus metrics:</p>
-                        <ol>
-                            <li>Enable metrics collection: <code>reverse-shell-killer --metrics</code></li>
-                            <li>Access metrics on port 8000</li>
-                            <li>Integrate with Prometheus and Grafana for visualization</li>
-                        </ol>
-                        <p>The tool provides metrics for detection counts, false positives, processes scanned, and resource usage.</p>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Can I monitor the tool's performance?</h3>
+                            <span class="faq-toggle"
+                                ><i class="fas fa-chevron-down"></i
+                            ></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Yes, Reverse Shell Killer supports Prometheus
+                                metrics:
+                            </p>
+                            <ol>
+                                <li>
+                                    Enable metrics collection:
+                                    <code>reverse-shell-killer --metrics</code>
+                                </li>
+                                <li>Access metrics on port 8000</li>
+                                <li>
+                                    Integrate with Prometheus and Grafana for
+                                    visualization
+                                </li>
+                            </ol>
+                            <p>
+                                The tool provides metrics for detection counts,
+                                false positives, processes scanned, and resource
+                                usage.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fas fa-shield-alt"></i>
-                    <h2>Reverse Shell Killer</h2>
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <i class="fas fa-shield-alt"></i>
+                        <h2>Reverse Shell Killer</h2>
+                    </div>
+                    <div class="footer-links">
+                        <h3>Links</h3>
+                        <ul>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#how-it-works">How It Works</a></li>
+                            <li><a href="#installation">Installation</a></li>
+                            <li><a href="#configuration">Configuration</a></li>
+                            <li><a href="#download">Download</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-github">
+                        <h3>GitHub</h3>
+                        <ul>
+                            <li>
+                                <a
+                                    href="https://github.com/hamidriaz1998/ReverseShellKiller"
+                                    >Repository</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://github.com/hamidriaz1998/ReverseShellKiller/issues"
+                                    >Issues</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://github.com/hamidriaz1998/ReverseShellKiller/releases"
+                                    >Releases</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h3>Contact</h3>
+                        <p>
+                            Found a bug or have a feature request? Please create
+                            an issue on GitHub.
+                        </p>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <h3>Links</h3>
-                    <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="#installation">Installation</a></li>
-                        <li><a href="#download">Download</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-github">
-                    <h3>GitHub</h3>
-                    <ul>
-                        <li><a href="https://github.com/hamidriaz1998/ReverseShellKiller">Repository</a></li>
-                        <li><a href="https://github.com/hamidriaz1998/ReverseShellKiller/issues">Issues</a></li>
-                        <li><a href="https://github.com/hamidriaz1998/ReverseShellKiller/releases">Releases</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h3>Contact</h3>
-                    <p>Found a bug or have a feature request? Please create an issue on GitHub.</p>
+                <div class="footer-bottom">
+                    <p>
+                        &copy; 2024 Reverse Shell Killer. Open-source software
+                        under the MIT License.
+                    </p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Reverse Shell Killer. Open-source software.</p>
-            </div>
-        </div>
-    </footer>
+        </footer>
 
-    <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>

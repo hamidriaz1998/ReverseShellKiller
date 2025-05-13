@@ -1,12 +1,53 @@
 // Toggle dark/light mode
-function toggleDarkMode() {
+function toggleDarkMode(inputElement) {
     const isDark = document.body.getAttribute('data-theme') === 'dark';
     if (isDark) {
         document.body.removeAttribute('data-theme');
         localStorage.setItem('theme', 'light');
+        
+        // Sync the other checkbox if this was triggered from one of the theme toggles
+        if (inputElement) {
+            const otherId = inputElement.id === 'theme-toggle' ? 'theme-toggle-mobile' : 'theme-toggle';
+            document.getElementById(otherId).checked = false;
+        }
     } else {
         document.body.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
+        
+        // Sync the other checkbox if this was triggered from one of the theme toggles
+        if (inputElement) {
+            const otherId = inputElement.id === 'theme-toggle' ? 'theme-toggle-mobile' : 'theme-toggle';
+            document.getElementById(otherId).checked = true;
+        }
+    }
+}
+
+// Toggle mobile navigation
+function toggleMobileNav() {
+    const nav = document.getElementById('main-nav');
+    const toggle = document.getElementById('mobile-nav-toggle');
+    const body = document.body;
+    const overlay = document.querySelector('.overlay');
+    
+    // Toggle classes
+    nav.classList.toggle('active');
+    toggle.classList.toggle('active');
+    body.classList.toggle('nav-open');
+    overlay.classList.toggle('active');
+    
+    // Add animation class
+    if (nav.classList.contains('active')) {
+        nav.style.animation = 'slideIn 0.3s forwards';
+        toggle.innerHTML = '<i class="fas fa-times"></i>';
+    } else {
+        nav.style.animation = 'slideOut 0.3s forwards';
+        toggle.innerHTML = '<i class="fas fa-bars"></i>';
+        // Reset nav position after animation completes
+        setTimeout(() => {
+            if (!nav.classList.contains('active')) {
+                nav.style.animation = '';
+            }
+        }, 300);
     }
 }
 
@@ -32,7 +73,30 @@ function copyToClipboard(button) {
 }
 
 // Create SVG shield image dynamically
+// Add CSS animations to head
+function addAnimationStyles() {
+    const styleEl = document.createElement('style');
+    styleEl.textContent = `
+        @keyframes slideIn {
+            from { right: -100%; }
+            to { right: 0; }
+        }
+        
+        @keyframes slideOut {
+            from { right: 0; }
+            to { right: -100%; }
+        }
+    `;
+    document.head.appendChild(styleEl);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Add animation styles
+    addAnimationStyles();
+    
+    // Set up overlay click handler
+    document.querySelector('.overlay').addEventListener('click', toggleMobileNav);
+    
     // Check for saved theme preference or respect OS preference
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -40,32 +104,76 @@ document.addEventListener('DOMContentLoaded', function() {
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
         document.body.setAttribute('data-theme', 'dark');
         document.getElementById('theme-toggle').checked = true;
+        document.getElementById('theme-toggle-mobile').checked = true;
     }
     
-    // Set up theme toggle listener
-    document.getElementById('theme-toggle').addEventListener('change', toggleDarkMode);
+    // Set up theme toggle listeners
+    document.getElementById('theme-toggle').addEventListener('change', function() {
+        toggleDarkMode(this);
+    });
     
-    // Initialize tab functionality
-    const tabButtons = document.querySelectorAll('.tab-button');
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons and content
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Add active class to clicked button and its content
-            button.classList.add('active');
-            const contentId = button.getAttribute('data-tab');
-            document.getElementById(contentId).classList.add('active');
+    document.getElementById('theme-toggle-mobile').addEventListener('change', function() {
+        toggleDarkMode(this);
+    });
+    
+    // Set up mobile navigation toggle
+    document.getElementById('mobile-nav-toggle').addEventListener('click', toggleMobileNav);
+    
+    // Close mobile nav when clicking on a link
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768 && document.getElementById('main-nav').classList.contains('active')) {
+                toggleMobileNav();
+            }
         });
     });
     
-    // Set first tab as active by default
-    if (tabButtons.length > 0) {
-        tabButtons[0].click();
-    }
+    // Handle resize events to reset mobile nav state when switching to desktop view
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && document.getElementById('main-nav').classList.contains('active')) {
+            document.getElementById('main-nav').classList.remove('active');
+            document.getElementById('mobile-nav-toggle').classList.remove('active');
+            document.querySelector('.overlay').classList.remove('active');
+            document.body.classList.remove('nav-open');
+            document.getElementById('mobile-nav-toggle').innerHTML = '<i class="fas fa-bars"></i>';
+        }
+    });
+    
+    // Initialize tab functionality for all tab groups
+    document.querySelectorAll('.installation-tabs, .config-tabs').forEach(tabGroup => {
+        const tabButtons = tabGroup.querySelectorAll('.tab-button');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Find sibling tab buttons in this group
+                const siblingButtons = tabGroup.querySelectorAll('.tab-button');
+                
+                // Remove active class from all buttons in this group
+                siblingButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Find all related content tabs
+                const contentId = button.getAttribute('data-tab');
+                const allTabContents = document.querySelectorAll(`.tab-content[id^="${contentId.split('-')[0]}"]`);
+                
+                // Hide all related tab contents
+                allTabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Add active class to clicked button and its content
+                button.classList.add('active');
+                const selectedContent = document.getElementById(contentId);
+                if (selectedContent) {
+                    selectedContent.classList.add('active');
+                }
+            });
+        });
+        
+        // Set first tab in each group as active by default
+        if (tabButtons.length > 0) {
+            tabButtons[0].click();
+        }
+    });
     
     const shieldImg = document.getElementById('shield-img');
     if (shieldImg) {
