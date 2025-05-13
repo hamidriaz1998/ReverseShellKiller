@@ -1,3 +1,15 @@
+// Toggle dark/light mode
+function toggleDarkMode() {
+    const isDark = document.body.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+        document.body.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+    } else {
+        document.body.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
 // Toggle FAQ items
 function toggleFAQ(element) {
     const faqItem = element.parentElement;
@@ -21,6 +33,40 @@ function copyToClipboard(button) {
 
 // Create SVG shield image dynamically
 document.addEventListener('DOMContentLoaded', function() {
+    // Check for saved theme preference or respect OS preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.body.setAttribute('data-theme', 'dark');
+        document.getElementById('theme-toggle').checked = true;
+    }
+    
+    // Set up theme toggle listener
+    document.getElementById('theme-toggle').addEventListener('change', toggleDarkMode);
+    
+    // Initialize tab functionality
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons and content
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Add active class to clicked button and its content
+            button.classList.add('active');
+            const contentId = button.getAttribute('data-tab');
+            document.getElementById(contentId).classList.add('active');
+        });
+    });
+    
+    // Set first tab as active by default
+    if (tabButtons.length > 0) {
+        tabButtons[0].click();
+    }
+    
     const shieldImg = document.getElementById('shield-img');
     if (shieldImg) {
         const svgContent = `

@@ -18,10 +18,20 @@
                 <ul>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#installation">Installation</a></li>
                     <li><a href="#download">Download</a></li>
                     <li><a href="#faq">FAQ</a></li>
                 </ul>
             </nav>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" />
+                    <span class="slider">
+                        <i class="fas fa-sun slider-icon sun-icon"></i>
+                        <i class="fas fa-moon slider-icon moon-icon"></i>
+                    </span>
+                </label>
+            </div>
         </div>
     </header>
 
@@ -32,7 +42,7 @@
                 <p>An open-source security tool that automatically detects and terminates malicious reverse shells using pattern matching and AI-powered analysis.</p>
                 <div class="cta-buttons">
                     <a href="#download" class="btn btn-primary">Download Now</a>
-                    <a href="https://github.com/yourusername/reverse_shell_killer" target="_blank" class="btn btn-secondary">View on GitHub</a>
+                    <a href="https://github.com/hamidriaz1998/ReverseShellKiller" target="_blank" class="btn btn-secondary">View on GitHub</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -134,6 +144,140 @@
         </div>
     </section>
 
+    <section id="installation">
+        <div class="container">
+            <h2 class="section-title">Installation</h2>
+            <div class="installation-tabs">
+                <button class="tab-button active" data-tab="source-install">Install from Source</button>
+                <button class="tab-button" data-tab="uv-install">Using uv</button>
+                <button class="tab-button" data-tab="binary-install">Build Linux Binary</button>
+                <button class="tab-button" data-tab="service-install">Run as a Service</button>
+            </div>
+            
+            <div class="tab-content active" id="source-install">
+                <div class="installation-steps">
+                    <div class="step">
+                        <h3>Install from Source</h3>
+                        <p>Clone the repository and install using pip:</p>
+                        <div class="code-block">
+                            <pre><code># Clone the repository
+git clone https://github.com/hamidriaz1998/ReverseShellKiller.git
+cd ReverseShellKiller
+
+# Create and activate a virtual environment
+python -m venv .venv
+source .venv/bin/activate
+
+# Install in development mode
+pip install -e .</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="uv-install">
+                <div class="installation-steps">
+                    <div class="step">
+                        <h3>Using uv (Python Package Installer)</h3>
+                        <p>If you don't have uv installed, you can get it from: <a href="https://github.com/astral-sh/uv" target="_blank">https://github.com/astral-sh/uv</a></p>
+                        <div class="code-block">
+                            <pre><code># Clone the repository
+git clone https://github.com/hamidriaz1998/ReverseShellKiller.git
+cd ReverseShellKiller
+
+# Create a virtual environment with UV
+uv init
+
+# Install packages
+uv sync</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="binary-install">
+                <div class="installation-steps">
+                    <div class="step">
+                        <h3>Building a Linux ELF Binary</h3>
+                        <p>To build a standalone executable:</p>
+                        <div class="code-block">
+                            <pre><code># Make sure you're in a virtual environment with dependencies installed
+uv add pyinstaller
+
+# Build the executable
+pyinstaller --clean linux_build.spec
+
+# Executable will be available at dist/reverse-shell-killer</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="service-install">
+                <div class="installation-steps">
+                    <div class="step">
+                        <h3>Running as a System Service</h3>
+                        <p>For persistent protection, you can set up Reverse Shell Killer as a systemd service:</p>
+                        
+                        <h4>Option 1: Using the Installation Script (Recommended)</h4>
+                        <ol>
+                            <li><strong>Build the binary:</strong> Follow the steps in "Building a Linux ELF Binary"</li>
+                            <li><strong>Create the .env file:</strong> Set up your credentials in a .env file in the project root</li>
+                            <li><strong>Run the installation script:</strong></li>
+                        </ol>
+                        <div class="code-block">
+                            <pre><code># Make the script executable (if needed)
+chmod +x scripts/install_service.sh
+
+# Run the installation script from the project root directory
+# Example: Install with default settings (interval 10, default log, no LLM)
+sudo ./scripts/install_service.sh
+
+# Example: Install with LLM enabled and a 5-second interval
+sudo ./scripts/install_service.sh --use-llm --interval 5
+
+# Example: Install with a custom log file
+sudo ./scripts/install_service.sh --logfile /var/log/custom_revshell.log</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        
+                        <h4>Option 2: Manual Setup</h4>
+                        <p>You can also manually configure the service:</p>
+                        <div class="code-block">
+                            <pre><code># Create the environment directory and copy your .env file
+sudo mkdir -p /etc/reverse-shell-killer
+sudo cp .env /etc/reverse-shell-killer/environment
+sudo chmod 600 /etc/reverse-shell-killer/environment
+
+# Create the service file
+sudo nano /etc/systemd/system/reverse-shell-killer.service
+
+# Enable and start the service
+sudo systemctl daemon-reload
+sudo systemctl enable reverse-shell-killer.service
+sudo systemctl start reverse-shell-killer.service</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                        
+                        <h4>Uninstalling the Service</h4>
+                        <p>If you need to remove the service:</p>
+                        <div class="code-block">
+                            <pre><code># Make the script executable (if needed)
+chmod +x scripts/uninstall_service.sh
+
+# Run the uninstall script
+sudo ./scripts/uninstall_service.sh</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="download">
         <div class="container">
             <h2 class="section-title">Download</h2>
@@ -144,10 +288,10 @@
                     </div>
                     <h3>Linux Executable</h3>
                     <p>Ready-to-use binary for Linux systems</p>
-                    <a href="downloads/reverse_shell_killer" class="btn btn-primary download-btn" download>
+                    <a href="https://github.com/hamidriaz1998/ReverseShellKiller/releases/download/v0.1.0/reverseShellKiller-linux-amd64" class="btn btn-primary download-btn" download>
                         <i class="fas fa-download"></i> Download for Linux
                     </a>
-                    <p class="version">Version 1.0.0</p>
+                    <p class="version">Version 0.1.0</p>
                 </div>
                 <div class="download-card">
                     <div class="download-icon">
@@ -155,7 +299,7 @@
                     </div>
                     <h3>Source Code</h3>
                     <p>Get the source code from GitHub</p>
-                    <a href="https://github.com/yourusername/reverse_shell_killer" target="_blank" class="btn btn-secondary">
+                    <a href="https://github.com/hamidriaz1998/ReverseShellKiller" target="_blank" class="btn btn-secondary">
                         <i class="fab fa-github"></i> View on GitHub
                     </a>
                     <p>Instructions for installation from source available in the README</p>
@@ -166,7 +310,7 @@
                 <h3>Quick Installation</h3>
                 <div class="code-block">
                     <pre><code># Download
-wget https://yourdomain.com/downloads/reverse_shell_killer
+wget https://github.com/hamidriaz1998/ReverseShellKiller/releases/download/v0.1.0/reverseShellKiller-linux-amd64
 
 # Make executable
 chmod +x reverse_shell_killer
@@ -220,6 +364,7 @@ chmod +x reverse_shell_killer
                         <pre>EMAIL_USER=your-email@gmail.com
 EMAIL_PASS=your-app-password
 EMAIL_RECIPIENT=admin@yourcompany.com</pre>
+                        <p><strong>Note:</strong> EMAIL_PASS should be a Gmail App Password, not your regular password. You can generate one in your Google Account security settings.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -228,7 +373,27 @@ EMAIL_RECIPIENT=admin@yourcompany.com</pre>
                         <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
                     </div>
                     <div class="faq-answer">
-                        <p>Add your Google Gemini API key to the .env file as GEMINI_API_KEY=your-api-key and run with the --use-llm flag.</p>
+                        <p>For enhanced detection accuracy, the tool can use Google's Gemini API:</p>
+                        <ol>
+                            <li>Get a Gemini API key from the <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a></li>
+                            <li>Add your API key to the .env file as GEMINI_API_KEY=your-api-key</li>
+                            <li>Run with the --use-llm flag: <code>reverse-shell-killer --use-llm</code></li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Can I monitor the tool's performance?</h3>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, Reverse Shell Killer supports Prometheus metrics:</p>
+                        <ol>
+                            <li>Enable metrics collection: <code>reverse-shell-killer --metrics</code></li>
+                            <li>Access metrics on port 8000</li>
+                            <li>Integrate with Prometheus and Grafana for visualization</li>
+                        </ol>
+                        <p>The tool provides metrics for detection counts, false positives, processes scanned, and resource usage.</p>
                     </div>
                 </div>
             </div>
@@ -247,6 +412,7 @@ EMAIL_RECIPIENT=admin@yourcompany.com</pre>
                     <ul>
                         <li><a href="#features">Features</a></li>
                         <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#installation">Installation</a></li>
                         <li><a href="#download">Download</a></li>
                         <li><a href="#faq">FAQ</a></li>
                     </ul>
@@ -254,9 +420,9 @@ EMAIL_RECIPIENT=admin@yourcompany.com</pre>
                 <div class="footer-github">
                     <h3>GitHub</h3>
                     <ul>
-                        <li><a href="https://github.com/yourusername/reverse_shell_killer">Repository</a></li>
-                        <li><a href="https://github.com/yourusername/reverse_shell_killer/issues">Issues</a></li>
-                        <li><a href="https://github.com/yourusername/reverse_shell_killer/releases">Releases</a></li>
+                        <li><a href="https://github.com/hamidriaz1998/ReverseShellKiller">Repository</a></li>
+                        <li><a href="https://github.com/hamidriaz1998/ReverseShellKiller/issues">Issues</a></li>
+                        <li><a href="https://github.com/hamidriaz1998/ReverseShellKiller/releases">Releases</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -265,7 +431,7 @@ EMAIL_RECIPIENT=admin@yourcompany.com</pre>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Reverse Shell Killer. Open-source software.</p>
+                <p>&copy; 2024 Reverse Shell Killer. Open-source software.</p>
             </div>
         </div>
     </footer>
