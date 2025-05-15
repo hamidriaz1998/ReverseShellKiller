@@ -1415,6 +1415,73 @@ footer {
     animation: particle-animation 3s infinite linear;
 }
 
+/* Sliding Animations */
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: var(--delay, 0s);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: var(--delay, 0s);
+}
+
+.slide-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: var(--delay, 0s);
+}
+
+.slide-down {
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: var(--delay, 0s);
+}
+
+.slide-in-left.aos-animate,
+.slide-in-right.aos-animate,
+.slide-up.aos-animate,
+.slide-down.aos-animate {
+    opacity: 1;
+    transform: translate(0);
+}
+
+/* Tab Sliding Animation */
+.tab-content {
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-content.active {
+    animation: slideInTab 0.5s ease forwards;
+}
+
+@keyframes slideInTab {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Mobile Navigation Slide */
+nav#main-nav {
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+nav#main-nav.active {
+    transform: translateX(0);
+}
+
 /* Responsive Styles */
 @media (max-width: 992px) {
     h1 {
@@ -1470,10 +1537,12 @@ footer {
         z-index: 1000;
         transition: right var(--transition-normal);
         box-shadow: var(--shadow-xl);
+        transform: translateX(100%);
     }
     
     nav#main-nav.active {
         right: 0;
+        transform: translateX(0);
     }
     
     nav ul {
