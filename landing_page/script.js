@@ -1,6 +1,7 @@
 // DOM Elements
 const body = document.body;
 const themeSwitch = document.getElementById('theme-switch');
+const mobileThemeSwitch = document.getElementById('mobile-theme-switch');
 const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
 const mainNav = document.getElementById('main-nav');
 const header = document.querySelector('header');
@@ -22,13 +23,15 @@ function toggleTheme() {
 function loadTheme() {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
         body.classList.add('dark-mode');
         themeSwitch.checked = true;
+        if (mobileThemeSwitch) mobileThemeSwitch.checked = true;
     } else {
         body.classList.remove('dark-mode');
         themeSwitch.checked = false;
+        if (mobileThemeSwitch) mobileThemeSwitch.checked = false;
     }
 }
 
@@ -52,7 +55,7 @@ function handleScroll() {
 function updateCursor(e) {
     cursor.style.left = `${e.clientX}px`;
     cursor.style.top = `${e.clientY}px`;
-    
+
     setTimeout(() => {
         cursorFollower.style.left = `${e.clientX}px`;
         cursorFollower.style.top = `${e.clientY}px`;
@@ -62,7 +65,7 @@ function updateCursor(e) {
 // Cursor Hover Effects
 function setupCursorEffects() {
     const interactiveElements = document.querySelectorAll('a, button, .feature-card, .faq-question, .tab-button, .copy-btn');
-    
+
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
             cursor.style.width = '16px';
@@ -85,7 +88,7 @@ function setupCursorEffects() {
 // Tab Functionality
 function setupTabs() {
     const tabGroups = document.querySelectorAll('.installation-tabs, .config-tabs');
-    
+
     tabGroups.forEach(tabGroup => {
         const tabButtons = tabGroup.querySelectorAll('.tab-button');
         
@@ -116,14 +119,14 @@ function setupTabs() {
 function toggleFAQ(element) {
     const faqItem = element.parentElement;
     const wasActive = faqItem.classList.contains('active');
-    
+
     // Close all other FAQ items
     document.querySelectorAll('.faq-item.active').forEach(item => {
         if (item !== faqItem) {
             item.classList.remove('active');
         }
     });
-    
+
     // Toggle the clicked item
     if (wasActive) {
         faqItem.classList.remove('active');
@@ -135,7 +138,7 @@ function toggleFAQ(element) {
 // Copy to Clipboard
 function copyToClipboard(button) {
     const codeBlock = button.parentElement.querySelector('pre').innerText;
-    
+
     navigator.clipboard.writeText(codeBlock).then(() => {
         const originalIcon = button.innerHTML;
         button.innerHTML = '<i class="fas fa-check"></i>';
@@ -150,7 +153,7 @@ function copyToClipboard(button) {
 function createParticles() {
     const container = document.querySelector('.particles-container');
     if (!container) return;
-    
+
     for (let i = 0; i < 20; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
@@ -190,7 +193,7 @@ function createParticles() {
 // Animate Stats Counter
 function animateStats() {
     const stats = document.querySelectorAll('.stat-number');
-    
+
     stats.forEach(stat => {
         const target = parseInt(stat.getAttribute('data-count'));
         const duration = 2000; // 2 seconds
@@ -220,8 +223,8 @@ function setupIntersectionObserver() {
             }
         });
     }, { threshold: 0.1 });
-    
-    document.querySelectorAll('[data-aos]').forEach(element => {
+
+    document.querySelectorAll('.slide-in-left, .slide-in-right, .slide-up, .slide-down').forEach(element => {
         observer.observe(element);
     });
 }
@@ -252,16 +255,19 @@ function setupSmoothScroll() {
 document.addEventListener('DOMContentLoaded', function() {
     // Load theme
     loadTheme();
-    
+
     // Theme toggle event
     themeSwitch.addEventListener('change', toggleTheme);
-    
+    if (mobileThemeSwitch) {
+        mobileThemeSwitch.addEventListener('change', toggleTheme);
+    }
+
     // Mobile nav toggle event
     mobileNavToggle.addEventListener('click', toggleMobileNav);
-    
+
     // Scroll event
     window.addEventListener('scroll', handleScroll);
-    
+
     // Custom cursor
     if (window.innerWidth > 768) {
         document.addEventListener('mousemove', updateCursor);
@@ -270,22 +276,22 @@ document.addEventListener('DOMContentLoaded', function() {
         cursor.style.display = 'none';
         cursorFollower.style.display = 'none';
     }
-    
+
     // Setup tabs
     setupTabs();
-    
+
     // Create particles
     createParticles();
-    
+
     // Animate stats
     animateStats();
-    
+
     // Setup intersection observer
     setupIntersectionObserver();
-    
+
     // Setup smooth scroll
     setupSmoothScroll();
-    
+
     // Handle window resize
     window.addEventListener('resize', () => {
         if (window.innerWidth > 768) {

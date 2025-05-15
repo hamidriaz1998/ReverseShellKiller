@@ -39,9 +39,18 @@
                     <li><a href="#download" class="nav-link">Download</a></li>
                     <li><a href="#faq" class="nav-link">FAQ</a></li>
                 </ul>
+                
+                <div class="mobile-theme-toggle">
+                    <input type="checkbox" id="mobile-theme-switch" checked>
+                    <label for="mobile-theme-switch" class="toggle-label">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                        <span class="toggle-ball"></span>
+                    </label>
+                </div>
             </nav>
             
-            <div class="theme-toggle">
+            <div class="desktop-theme-toggle">
                 <input type="checkbox" id="theme-switch" checked>
                 <label for="theme-switch" class="toggle-label">
                     <i class="fas fa-sun"></i>
@@ -54,7 +63,7 @@
 
     <section id="hero">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content slide-in-left">
                 <div class="badge">
                     <span>Open Source</span>
                     <span class="dot"></span>
@@ -73,27 +82,27 @@
                     </a>
                 </div>
                 <div class="hero-stats">
-                    <div class="stat">
+                    <div class="stat slide-up" style="--delay: 0.1s">
                         <div class="stat-value">
                             <span class="stat-number" data-count="99.8">0</span>%
                         </div>
                         <span class="stat-label">Detection Rate</span>
                     </div>
-                    <!-- <div class="stat">
+                    <div class="stat slide-up" style="--delay: 0.2s">
                         <div class="stat-value">
                             <span class="stat-number" data-count="500">0</span>+
                         </div>
                         <span class="stat-label">GitHub Stars</span>
-                    </div> -->
-                    <div class="stat">
+                    </div>
+                    <div class="stat slide-up" style="--delay: 0.3s">
                         <div class="stat-value">
-                            <span class="stat-number" data-count="10">0</span>+
+                            <span class="stat-number" data-count="10000">0</span>+
                         </div>
                         <span class="stat-label">Downloads</span>
                     </div>
                 </div>
             </div>
-            <div class="hero-visual">
+            <div class="hero-visual slide-in-right">
                 <div class="shield-container">
                     <div class="shield-glow"></div>
                     <div class="shield-3d">
@@ -153,46 +162,46 @@
     <section id="features">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" data-aos="fade-up">Key Features</h2>
-                <p class="section-subtitle" data-aos="fade-up">Powerful tools to protect your Linux systems</p>
+                <h2 class="section-title slide-up">Key Features</h2>
+                <p class="section-subtitle slide-up" style="--delay: 0.1s">Powerful tools to protect your Linux systems</p>
             </div>
             <div class="features-grid">
-                <div class="feature-card glass" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card glass slide-up" style="--delay: 0.1s">
                     <div class="feature-icon">
                         <i class="fas fa-search"></i>
                     </div>
                     <h3>Intelligent Detection</h3>
                     <p>Uses both pattern matching and AI-powered analysis to identify reverse shells with high accuracy.</p>
                 </div>
-                <div class="feature-card glass" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card glass slide-up" style="--delay: 0.2s">
                     <div class="feature-icon">
                         <i class="fas fa-shield-virus"></i>
                     </div>
                     <h3>Real-time Protection</h3>
                     <p>Continuously monitors processes and network connections to catch reverse shells in real-time.</p>
                 </div>
-                <div class="feature-card glass" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-card glass slide-up" style="--delay: 0.3s">
                     <div class="feature-icon">
                         <i class="fas fa-bell"></i>
                     </div>
                     <h3>Email Notifications</h3>
                     <p>Sends detailed email alerts when suspicious activity is detected.</p>
                 </div>
-                <div class="feature-card glass" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-card glass slide-up" style="--delay: 0.4s">
                     <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <h3>Metrics Collection</h3>
                     <p>Built-in Prometheus integration for monitoring and visualization.</p>
                 </div>
-                <div class="feature-card glass" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-card glass slide-up" style="--delay: 0.5s">
                     <div class="feature-icon">
                         <i class="fas fa-brain"></i>
                     </div>
                     <h3>LLM-Powered Analysis</h3>
                     <p>Optional Google Gemini integration for advanced threat detection with minimal false positives.</p>
                 </div>
-                <div class="feature-card glass" data-aos="fade-up" data-aos-delay="600">
+                <div class="feature-card glass slide-up" style="--delay: 0.6s">
                     <div class="feature-icon">
                         <i class="fas fa-cogs"></i>
                     </div>
@@ -206,39 +215,39 @@
     <section id="how-it-works">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" data-aos="fade-up">How It Works</h2>
-                <p class="section-subtitle" data-aos="fade-up">A sophisticated approach to security</p>
+                <h2 class="section-title slide-up">How It Works</h2>
+                <p class="section-subtitle slide-up" style="--delay: 0.1s">A sophisticated approach to security</p>
             </div>
             <div class="workflow">
-                <div class="workflow-item glass" data-aos="fade-right" data-aos-delay="100">
+                <div class="workflow-item glass slide-in-left" style="--delay: 0.1s">
                     <div class="workflow-number">1</div>
                     <div class="workflow-content">
                         <h3>Process Scanning</h3>
                         <p>Periodically scans all running processes and their command line arguments.</p>
                     </div>
                 </div>
-                <div class="workflow-item glass" data-aos="fade-right" data-aos-delay="200">
+                <div class="workflow-item glass slide-in-right" style="--delay: 0.2s">
                     <div class="workflow-number">2</div>
                     <div class="workflow-content">
                         <h3>Pattern Matching</h3>
                         <p>Applies regex-based detection to identify commonly used reverse shell patterns.</p>
                     </div>
                 </div>
-                <div class="workflow-item glass" data-aos="fade-right" data-aos-delay="300">
+                <div class="workflow-item glass slide-in-left" style="--delay: 0.3s">
                     <div class="workflow-number">3</div>
                     <div class="workflow-content">
                         <h3>Network Analysis</h3>
                         <p>Examines suspicious network connections that may indicate command and control channels.</p>
                     </div>
                 </div>
-                <div class="workflow-item glass" data-aos="fade-right" data-aos-delay="400">
+                <div class="workflow-item glass slide-in-right" style="--delay: 0.4s">
                     <div class="workflow-number">4</div>
                     <div class="workflow-content">
                         <h3>LLM Verification</h3>
                         <p>Uses Google Gemini to analyze suspicious processes and reduce false positives.</p>
                     </div>
                 </div>
-                <div class="workflow-item glass" data-aos="fade-right" data-aos-delay="500">
+                <div class="workflow-item glass slide-in-left" style="--delay: 0.5s">
                     <div class="workflow-number">5</div>
                     <div class="workflow-content">
                         <h3>Threat Response</h3>
@@ -252,10 +261,10 @@
     <section id="installation">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" data-aos="fade-up">Installation</h2>
-                <p class="section-subtitle" data-aos="fade-up">Quick and easy setup process</p>
+                <h2 class="section-title slide-up">Installation</h2>
+                <p class="section-subtitle slide-up" style="--delay: 0.1s">Quick and easy setup process</p>
             </div>
-            <div class="installation-tabs" data-aos="fade-up">
+            <div class="installation-tabs slide-up" style="--delay: 0.2s">
                 <button class="tab-button active" data-tab="source-install">
                     <i class="fas fa-code"></i> Source
                 </button>
@@ -263,20 +272,21 @@
                     <i class="fas fa-bolt"></i> UV
                 </button>
                 <button class="tab-button" data-tab="binary-install">
-                    <i class="fas fa-file-binary"></i> Binary
+                    <i class="fas fa-file-archive"></i> Binary
                 </button>
                 <button class="tab-button" data-tab="service-install">
                     <i class="fas fa-server"></i> Service
                 </button>
             </div>
 
-            <div class="tab-content active glass" id="source-install">
-                <div class="installation-steps">
-                    <div class="step" data-aos="fade-up">
-                        <h3>Install from Source</h3>
-                        <p>Clone the repository and install using pip:</p>
-                        <div class="code-block">
-                            <pre><code># Clone the repository
+            <div class="tab-content-container">
+                <div class="tab-content active glass slide-up" id="source-install" style="--delay: 0.3s">
+                    <div class="installation-steps">
+                        <div class="step">
+                            <h3>Install from Source</h3>
+                            <p>Clone the repository and install using pip:</p>
+                            <div class="code-block">
+                                <pre><code># Clone the repository
 git clone https://github.com/hamidriaz1998/ReverseShellKiller.git
 cd ReverseShellKiller
 
@@ -286,20 +296,20 @@ source .venv/bin/activate
 
 # Install in development mode
 pip install -e .</code></pre>
-                            <button class="copy-btn" onclick="copyToClipboard(this)">
-                                <i class="fas fa-copy"></i>
-                            </button>
+                                <button class="copy-btn" onclick="copyToClipboard(this)">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="tab-content glass" id="uv-install">
-                <div class="installation-steps">
-                    <div class="step" data-aos="fade-up">
-                        <h3>Using UV Package Manager</h3>
-                        <div class="code-block">
-                            <pre><code># Clone the repository
+                <div class="tab-content glass slide-up" id="uv-install" style="--delay: 0.3s">
+                    <div class="installation-steps">
+                        <div class="step">
+                            <h3>Using UV Package Manager</h3>
+                            <div class="code-block">
+                                <pre><code># Clone the repository
 git clone https://github.com/hamidriaz1998/ReverseShellKiller.git
 cd ReverseShellKiller
 
@@ -308,50 +318,50 @@ uv init
 
 # Install packages
 uv sync</code></pre>
-                            <button class="copy-btn" onclick="copyToClipboard(this)">
-                                <i class="fas fa-copy"></i>
-                            </button>
+                                <button class="copy-btn" onclick="copyToClipboard(this)">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                            <p>Remember to set up your environment variables in a <code>.env</code> file as described in the <a href="#configuration">Configuration</a> section before running the tool.</p>
                         </div>
-                        <p>Remember to set up your environment variables in a <code>.env</code> file as described in the <a href="#configuration">Configuration</a> section before running the tool.</p>
                     </div>
                 </div>
-            </div>
 
-            <div class="tab-content glass" id="binary-install">
-                <div class="installation-steps">
-                    <div class="step" data-aos="fade-up">
-                        <h3>Building a Linux ELF Binary</h3>
-                        <p>To build a standalone executable:</p>
-                        <div class="code-block">
-                            <pre><code># Make sure you're in a virtual environment with dependencies installed
+                <div class="tab-content glass slide-up" id="binary-install" style="--delay: 0.3s">
+                    <div class="installation-steps">
+                        <div class="step">
+                            <h3>Building a Linux ELF Binary</h3>
+                            <p>To build a standalone executable:</p>
+                            <div class="code-block">
+                                <pre><code># Make sure you're in a virtual environment with dependencies installed
 uv add pyinstaller
 
 # Build the executable
 pyinstaller --clean linux_build.spec
 
 # Executable will be available at dist/reverse-shell-killer</code></pre>
-                            <button class="copy-btn" onclick="copyToClipboard(this)">
-                                <i class="fas fa-copy"></i>
-                            </button>
+                                <button class="copy-btn" onclick="copyToClipboard(this)">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="tab-content glass" id="service-install">
-                <div class="installation-steps">
-                    <div class="step" data-aos="fade-up">
-                        <h3>Running as a System Service</h3>
-                        <p>For persistent protection, you can set up Reverse Shell Killer as a systemd service. Make sure you've set up the required environment variables in a <code>.env</code> file first (see <a href="#configuration">Configuration</a>):</p>
+                <div class="tab-content glass slide-up" id="service-install" style="--delay: 0.3s">
+                    <div class="installation-steps">
+                        <div class="step">
+                            <h3>Running as a System Service</h3>
+                            <p>For persistent protection, you can set up Reverse Shell Killer as a systemd service. Make sure you've set up the required environment variables in a <code>.env</code> file first (see <a href="#configuration">Configuration</a>):</p>
 
-                        <h4>Option 1: Using the Installation Script (Recommended)</h4>
-                        <ol>
-                            <li><strong>Build the binary:</strong> Follow the steps in "Building a Linux ELF Binary"</li>
-                            <li><strong>Create the .env file:</strong> Set up your credentials in a .env file in the project root</li>
-                            <li><strong>Run the installation script:</strong></li>
-                        </ol>
-                        <div class="code-block">
-                            <pre><code># Make the script executable (if needed)
+                            <h4>Option 1: Using the Installation Script (Recommended)</h4>
+                            <ol>
+                                <li><strong>Build the binary:</strong> Follow the steps in "Building a Linux ELF Binary"</li>
+                                <li><strong>Create the .env file:</strong> Set up your credentials in a .env file in the project root</li>
+                                <li><strong>Run the installation script:</strong></li>
+                            </ol>
+                            <div class="code-block">
+                                <pre><code># Make the script executable (if needed)
 chmod +x scripts/install_service.sh
 
 # Run the installation script from the project root directory
@@ -363,9 +373,10 @@ sudo ./scripts/install_service.sh --use-llm --interval 5
 
 # Example: Install with a custom log file
 sudo ./scripts/install_service.sh --logfile /var/log/custom_revshell.log</code></pre>
-                            <button class="copy-btn" onclick="copyToClipboard(this)">
-                                <i class="fas fa-copy"></i>
-                            </button>
+                                <button class="copy-btn" onclick="copyToClipboard(this)">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -376,11 +387,11 @@ sudo ./scripts/install_service.sh --logfile /var/log/custom_revshell.log</code><
     <section id="configuration">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" data-aos="fade-up">Configuration</h2>
-                <p class="section-subtitle" data-aos="fade-up">Customize to fit your security needs</p>
+                <h2 class="section-title slide-up">Configuration</h2>
+                <p class="section-subtitle slide-up" style="--delay: 0.1s">Customize to fit your security needs</p>
             </div>
 
-            <div class="config-tabs" data-aos="fade-up">
+            <div class="config-tabs slide-up" style="--delay: 0.2s">
                 <button class="tab-button active" data-tab="cmd-args">
                     <i class="fas fa-terminal"></i> Command-Line Arguments
                 </button>
@@ -389,139 +400,141 @@ sudo ./scripts/install_service.sh --logfile /var/log/custom_revshell.log</code><
                 </button>
             </div>
 
-            <div class="tab-content active glass" id="cmd-args">
-                <div class="config-content">
-                    <h3 data-aos="fade-up">Command-Line Arguments</h3>
-                    <p data-aos="fade-up">Reverse Shell Killer supports various command-line arguments to customize its behavior:</p>
+            <div class="tab-content-container">
+                <div class="tab-content active glass slide-up" id="cmd-args" style="--delay: 0.3s">
+                    <div class="config-content">
+                        <h3>Command-Line Arguments</h3>
+                        <p>Reverse Shell Killer supports various command-line arguments to customize its behavior:</p>
 
-                    <div class="args-table" data-aos="fade-up">
-                        <div class="arg-row">
-                            <div class="arg-name">
-                                <code>--interval</code>
+                        <div class="args-table">
+                            <div class="arg-row slide-in-left" style="--delay: 0.1s">
+                                <div class="arg-name">
+                                    <code>--interval</code>
+                                </div>
+                                <div class="arg-desc">
+                                    <p>Scan interval in seconds (default: 10)</p>
+                                    <p><em>Example: <code>--interval 5</code> to scan every 5 seconds</em></p>
+                                </div>
                             </div>
-                            <div class="arg-desc">
-                                <p>Scan interval in seconds (default: 10)</p>
-                                <p><em>Example: <code>--interval 5</code> to scan every 5 seconds</em></p>
+
+                            <div class="arg-row slide-in-right" style="--delay: 0.2s">
+                                <div class="arg-name">
+                                    <code>--logfile</code>
+                                </div>
+                                <div class="arg-desc">
+                                    <p>Path to log file (default: ./revlogs.log)</p>
+                                    <p><em>Example: <code>--logfile /var/log/revshell.log</code></em></p>
+                                </div>
+                            </div>
+
+                            <div class="arg-row slide-in-left" style="--delay: 0.3s">
+                                <div class="arg-name">
+                                    <code>--dry-run</code>
+                                </div>
+                                <div class="arg-desc">
+                                    <p>Detect suspicious processes but do not terminate them</p>
+                                    <p><em>Useful for testing before deploying in production</em></p>
+                                </div>
+                            </div>
+
+                            <div class="arg-row slide-in-right" style="--delay: 0.4s">
+                                <div class="arg-name">
+                                    <code>--metrics</code>
+                                </div>
+                                <div class="arg-desc">
+                                    <p>Enable Prometheus metrics collection</p>
+                                    <p><em>Exposes metrics on port 8000 for monitoring</em></p>
+                                </div>
+                            </div>
+
+                            <div class="arg-row slide-in-left" style="--delay: 0.5s">
+                                <div class="arg-name">
+                                    <code>--use-llm</code>
+                                </div>
+                                <div class="arg-desc">
+                                    <p>Enable LLM-based analysis for improved detection accuracy</p>
+                                    <p><em>Requires Google Gemini API key</em></p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="arg-row">
-                            <div class="arg-name">
-                                <code>--logfile</code>
-                            </div>
-                            <div class="arg-desc">
-                                <p>Path to log file (default: ./revlogs.log)</p>
-                                <p><em>Example: <code>--logfile /var/log/revshell.log</code></em></p>
-                            </div>
-                        </div>
-
-                        <div class="arg-row">
-                            <div class="arg-name">
-                                <code>--dry-run</code>
-                            </div>
-                            <div class="arg-desc">
-                                <p>Detect suspicious processes but do not terminate them</p>
-                                <p><em>Useful for testing before deploying in production</em></p>
-                            </div>
-                        </div>
-
-                        <div class="arg-row">
-                            <div class="arg-name">
-                                <code>--metrics</code>
-                            </div>
-                            <div class="arg-desc">
-                                <p>Enable Prometheus metrics collection</p>
-                                <p><em>Exposes metrics on port 8000 for monitoring</em></p>
-                            </div>
-                        </div>
-
-                        <div class="arg-row">
-                            <div class="arg-name">
-                                <code>--use-llm</code>
-                            </div>
-                            <div class="arg-desc">
-                                <p>Enable LLM-based analysis for improved detection accuracy</p>
-                                <p><em>Requires Google Gemini API key</em></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="example-usage" data-aos="fade-up">
-                        <h4>Example Usage</h4>
-                        <div class="code-block">
-                            <pre><code># Basic usage with default settings
+                        <div class="example-usage slide-up" style="--delay: 0.6s">
+                            <h4>Example Usage</h4>
+                            <div class="code-block">
+                                <pre><code># Basic usage with default settings
 reverse-shell-killer
 
 # Advanced configuration
 reverse-shell-killer --interval 5 --logfile /var/log/revshell.log --use-llm --metrics</code></pre>
-                            <button class="copy-btn" onclick="copyToClipboard(this)">
-                                <i class="fas fa-copy"></i>
-                            </button>
+                                <button class="copy-btn" onclick="copyToClipboard(this)">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="tab-content glass" id="env-vars">
-                <div class="config-content">
-                    <h3 data-aos="fade-up">Environment Variables</h3>
-                    <p data-aos="fade-up">Reverse Shell Killer uses environment variables for sensitive configurations like API keys and email credentials. These should be stored in a <code>.env</code> file in the project's root directory.</p>
+                <div class="tab-content glass slide-up" id="env-vars" style="--delay: 0.3s">
+                    <div class="config-content">
+                        <h3>Environment Variables</h3>
+                        <p>Reverse Shell Killer uses environment variables for sensitive configurations like API keys and email credentials. These should be stored in a <code>.env</code> file in the project's root directory.</p>
 
-                    <div class="env-file" data-aos="fade-up">
-                        <h4>Sample .env File</h4>
-                        <div class="code-block">
-                            <pre><code># Google Gemini API Key for LLM-based detection
+                        <div class="env-file slide-up" style="--delay: 0.1s">
+                            <h4>Sample .env File</h4>
+                            <div class="code-block">
+                                <pre><code># Google Gemini API Key for LLM-based detection
 GEMINI_API_KEY=your_gemini_api_key_here
 
 # Email notification settings
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_gmail_app_password
 EMAIL_RECIPIENT=recipient_email@example.com</code></pre>
-                            <button class="copy-btn" onclick="copyToClipboard(this)">
-                                <i class="fas fa-copy"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="env-vars-table" data-aos="fade-up">
-                        <h4>Available Environment Variables</h4>
-
-                        <div class="var-row">
-                            <div class="var-name">
-                                <code>GEMINI_API_KEY</code>
-                            </div>
-                            <div class="var-desc">
-                                <p>Your Google Gemini API key for LLM-based detection</p>
-                                <p><em>Required when using <code>--use-llm</code> flag</em></p>
-                                <p>Get your API key from the <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a></p>
+                                <button class="copy-btn" onclick="copyToClipboard(this)">
+                                    <i class="fas fa-copy"></i>
+                                </button>
                             </div>
                         </div>
 
-                        <div class="var-row">
-                            <div class="var-name">
-                                <code>EMAIL_USER</code>
+                        <div class="env-vars-table">
+                            <h4 class="slide-up" style="--delay: 0.2s">Available Environment Variables</h4>
+
+                            <div class="var-row slide-in-left" style="--delay: 0.3s">
+                                <div class="var-name">
+                                    <code>GEMINI_API_KEY</code>
+                                </div>
+                                <div class="var-desc">
+                                    <p>Your Google Gemini API key for LLM-based detection</p>
+                                    <p><em>Required when using <code>--use-llm</code> flag</em></p>
+                                    <p>Get your API key from the <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a></p>
+                                </div>
                             </div>
-                            <div class="var-desc">
-                                <p>Gmail address to send notifications from</p>
-                                <p><em>Required for email notifications</em></p>
+
+                            <div class="var-row slide-in-right" style="--delay: 0.4s">
+                                <div class="var-name">
+                                    <code>EMAIL_USER</code>
+                                </div>
+                                <div class="var-desc">
+                                    <p>Gmail address to send notifications from</p>
+                                    <p><em>Required for email notifications</em></p>
+                                </div>
+                            </div>
+
+                            <div class="var-row slide-in-left" style="--delay: 0.5s">
+                                <div class="var-name">
+                                    <code>EMAIL_PASS</code>
+                                </div>
+                                <div class="var-desc">
+                                    <p>Gmail app password (not your regular Gmail password)</p>
+                                    <p><em>Required for email notifications</em></p>
+                                    <p>Generate an App Password in your <a href="https://myaccount.google.com/apppasswords" target="_blank">Google Account Security settings</a></p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="var-row">
-                            <div class="var-name">
-                                <code>EMAIL_PASS</code>
-                            </div>
-                            <div class="var-desc">
-                                <p>Gmail app password (not your regular Gmail password)</p>
-                                <p><em>Required for email notifications</em></p>
-                                <p>Generate an App Password in your <a href="https://myaccount.google.com/apppasswords" target="_blank">Google Account Security settings</a></p>
-                            </div>
+                        <div class="security-note slide-up" style="--delay: 0.6s">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Security Note</h4>
+                            <p>Keep your <code>.env</code> file secure and never commit it to version control. The file is included in <code>.gitignore</code> by default.</p>
                         </div>
-                    </div>
-
-                    <div class="security-note" data-aos="fade-up">
-                        <h4><i class="fas fa-exclamation-triangle"></i> Security Note</h4>
-                        <p>Keep your <code>.env</code> file secure and never commit it to version control. The file is included in <code>.gitignore</code> by default.</p>
                     </div>
                 </div>
             </div>
@@ -531,11 +544,11 @@ EMAIL_RECIPIENT=recipient_email@example.com</code></pre>
     <section id="download">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" data-aos="fade-up">Download</h2>
-                <p class="section-subtitle" data-aos="fade-up">Get started with Reverse Shell Killer</p>
+                <h2 class="section-title slide-up">Download</h2>
+                <p class="section-subtitle slide-up" style="--delay: 0.1s">Get started with Reverse Shell Killer</p>
             </div>
             <div class="download-options">
-                <div class="download-card glass" data-aos="fade-up" data-aos-delay="100">
+                <div class="download-card glass slide-in-left" style="--delay: 0.2s">
                     <div class="download-icon">
                         <i class="fab fa-linux"></i>
                     </div>
@@ -546,7 +559,7 @@ EMAIL_RECIPIENT=recipient_email@example.com</code></pre>
                     </a>
                     <div class="version">Version 0.1.0</div>
                 </div>
-                <div class="download-card glass" data-aos="fade-up" data-aos-delay="200">
+                <div class="download-card glass slide-in-right" style="--delay: 0.3s">
                     <div class="download-icon">
                         <i class="fab fa-github"></i>
                     </div>
@@ -559,7 +572,7 @@ EMAIL_RECIPIENT=recipient_email@example.com</code></pre>
                 </div>
             </div>
 
-            <div class="install-instructions glass" data-aos="fade-up">
+            <div class="install-instructions glass slide-up" style="--delay: 0.4s">
                 <h3>Quick Installation</h3>
                 <div class="code-block">
                     <pre><code># Download
@@ -581,11 +594,11 @@ chmod +x reverseShellKiller-linux-amd64
     <section id="faq">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
-                <p class="section-subtitle" data-aos="fade-up">Common questions about Reverse Shell Killer</p>
+                <h2 class="section-title slide-up">Frequently Asked Questions</h2>
+                <p class="section-subtitle slide-up" style="--delay: 0.1s">Common questions about Reverse Shell Killer</p>
             </div>
             <div class="faq-container">
-                <div class="faq-item glass" data-aos="fade-up" data-aos-delay="100">
+                <div class="faq-item glass slide-in-left" style="--delay: 0.2s">
                     <div class="faq-question" onclick="toggleFAQ(this)">
                         <h3>What is a reverse shell?</h3>
                         <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
@@ -594,7 +607,7 @@ chmod +x reverseShellKiller-linux-amd64
                         <p>A reverse shell is a type of shell in which the target machine initiates a connection back to the attacker's machine. This is commonly used in cyberattacks to bypass firewalls and gain unauthorized access to systems.</p>
                     </div>
                 </div>
-                <div class="faq-item glass" data-aos="fade-up" data-aos-delay="200">
+                <div class="faq-item glass slide-in-right" style="--delay: 0.3s">
                     <div class="faq-question" onclick="toggleFAQ(this)">
                         <h3>Does this tool require root privileges?</h3>
                         <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
@@ -603,7 +616,7 @@ chmod +x reverseShellKiller-linux-amd64
                         <p>Yes, to monitor all processes and terminate malicious ones, this tool needs to run with root privileges. You can run it using sudo or as the root user.</p>
                     </div>
                 </div>
-                <div class="faq-item glass" data-aos="fade-up" data-aos-delay="300">
+                <div class="faq-item glass slide-in-left" style="--delay: 0.4s">
                     <div class="faq-question" onclick="toggleFAQ(this)">
                         <h3>Can I use this on production servers?</h3>
                         <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
@@ -612,7 +625,7 @@ chmod +x reverseShellKiller-linux-amd64
                         <p>Yes, but we recommend running it in dry-run mode (--dry-run) first to ensure it doesn't terminate any legitimate processes in your environment. Once you're confident in its detection capabilities, you can enable automatic termination.</p>
                     </div>
                 </div>
-                <div class="faq-item glass" data-aos="fade-up" data-aos-delay="400">
+                <div class="faq-item glass slide-in-right" style="--delay: 0.5s">
                     <div class="faq-question" onclick="toggleFAQ(this)">
                         <h3>How do I set up email notifications?</h3>
                         <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
@@ -626,7 +639,7 @@ EMAIL_RECIPIENT=admin@yourcompany.com</pre>
                         <p><strong>Note:</strong> EMAIL_PASS should be a Gmail App Password, not your regular password. You can generate one in your Google Account security settings.</p>
                     </div>
                 </div>
-                <div class="faq-item glass" data-aos="fade-up" data-aos-delay="500">
+                <div class="faq-item glass slide-in-left" style="--delay: 0.6s">
                     <div class="faq-question" onclick="toggleFAQ(this)">
                         <h3>How can I enable LLM-powered detection?</h3>
                         <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
@@ -652,13 +665,13 @@ EMAIL_RECIPIENT=admin@yourcompany.com</pre>
         </div>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
+                <div class="footer-logo slide-in-left" style="--delay: 0.1s">
                     <div class="logo-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h2>Reverse Shell Killer</h2>
                 </div>
-                <div class="footer-links">
+                <div class="footer-links slide-in-right" style="--delay: 0.2s">
                     <h3>Links</h3>
                     <ul>
                         <li><a href="#features">Features</a></li>
@@ -669,7 +682,7 @@ EMAIL_RECIPIENT=admin@yourcompany.com</pre>
                         <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
-                <div class="footer-github">
+                <div class="footer-github slide-in-left" style="--delay: 0.3s">
                     <h3>GitHub</h3>
                     <ul>
                         <li><a href="https://github.com/hamidriaz1998/ReverseShellKiller">Repository</a></li>
@@ -677,7 +690,7 @@ EMAIL_RECIPIENT=admin@yourcompany.com</pre>
                         <li><a href="https://github.com/hamidriaz1998/ReverseShellKiller/releases">Releases</a></li>
                     </ul>
                 </div>
-                <div class="footer-contact">
+                <div class="footer-contact slide-in-right" style="--delay: 0.4s">
                     <h3>Contact</h3>
                     <p>Found a bug or have a feature request? Please create an issue on GitHub.</p>
                     <div class="social-links">
@@ -687,7 +700,7 @@ EMAIL_RECIPIENT=admin@yourcompany.com</pre>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footer-bottom slide-up" style="--delay: 0.5s">
                 <p>&copy; 2024 Reverse Shell Killer. Open-source software under the MIT License.</p>
             </div>
         </div>
